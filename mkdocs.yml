@@ -1,0 +1,92 @@
+---
+site_name: MyNotes
+site_description: My notes about different technologies.
+site_author: Adrián Martín García
+
+repo_url: https://github.com/amartingarcia/notes
+
+nav:
+    - Home: index.md
+## TO DO
+#    - BBDD:
+#        - Relational:
+#        - NoSQL:
+#    - CICD:
+#        - Azure Pipelines:
+#        - Bitbucket:
+#        - Github Actions:
+#        - GitlabCI:
+#        - Jenkins:
+#            - Jenkinsfile:
+#    - Cloud Private:
+#        - Openstack:
+#    - Cloud Public:
+#        - Amazon Web Services:
+#        - Google Cloud Platform:
+#        - Microsoft Azure:
+#    - Code:
+#        - Go:
+#        - Python:
+#        - Shell Script:
+#    - Configuration Management:
+#        - Ansible:
+#        - Ansible Tower:
+#        - Ansible AWX:
+#        - Chef:
+#        - Puppet:
+#        - Salt:
+#        - Foreman:
+#    - Containers:
+#        - Docker:
+#        - Dockerfiles:
+#        - Registries:
+#    - Git:
+#    - Gitops:
+#    - Infrastructure as Code:
+#        - ARM:
+#        - Cloudformation:
+#        - Deployment Manager:
+#        - Terraform:
+#            - tflint:
+#            - tfdocs:
+#            - Terragrunt:
+#    - Kafka:
+#    - Kubernetes:
+#        - Helm:
+#            - helm-docs:
+#        - Helmfile: kubernetes/helmfile.md
+#        - Helmwave:
+#        - kOps:
+#    - Linux:
+#    - Monitoring:
+#        - Prometheus:
+#            - Node Exporter:
+#        - Loki:
+#        - Promtail:
+#        - Cloudwatch:
+#    - Openshift:
+#    - QA:
+#        - Semantic Release:
+
+theme:
+  name: readthedocs
+  features:
+    - navigation.tabs
+  collapse_navigation: false
+  hljs_languages:
+    - yaml
+    - dockerfile
+
+markdown_extensions:
+  # meta, toc, table and fenced_code extensions are included by default
+  - extra
+  - admonition
+  - smarty
+  - sane_lists
+  - nl2br
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+...
