@@ -68,8 +68,8 @@ nav:
 #        - Microsoft Azure:
 #    - Private Cloud:
 #        - Openstack:
-#    - QA:
-#        - Semantic Release:
+    - QA:
+        - Semantic Release: qa/semantic_release.md
 
 theme:
   name: readthedocs
