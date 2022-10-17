@@ -46,12 +46,12 @@ nav:
 #            - tfdocs:
 #            - Terragrunt:
 #    - Kafka:
-#    - Kubernetes:
+    - Kubernetes:
 #        - Helm:
 #            - helm-docs:
 #        - Helmfile: kubernetes/helmfile.md
 #        - Helmwave:
-#        - kOps:
+        - kOps: kubernetes/kops.md
 #    - Linux:
 #    - Monitoring:
 #        - Prometheus:
