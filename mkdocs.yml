@@ -50,8 +50,8 @@ nav:
         - Helm: 
             - kubernetes/helm/helm.md
 #            - helm-docs: kubernetes/helm/helm-docs.md
-            - Helmfile: kubernetes/helmfile.md
-            - SOPS: kubernetes/sops.md
+            - Helmfile: kubernetes/helm/helmfile.md
+            - SOPS: kubernetes/helm/sops.md
 #        - Helmwave:
         - kOps: kubernetes/kops.md
 #    - Linux:
