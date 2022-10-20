@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Adrián Martín García" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>SOPS - MyNotes</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SOPS";
+        var mkdocs_page_input_path = "kubernetes/helm/sops.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/dockerfile.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MyNotes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Git</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../git/multi_accounts/">Multi-accounts</a>
+    <ul>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Kubernetes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Helm</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../helm/">Helm</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../helm/#helm-charts">Helm Charts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../helm/#directory-hierarchy">Directory hierarchy</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../helmfile.md">Helmfile</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../sops.md">SOPS</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kops/">kOps</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../kops/#example-file">Example file</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QA</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../qa/semantic_release/">Semantic Release</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../../qa/semantic_release/#how-semantic-selease-works">How Semantic Selease works</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MyNotes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>SOPS</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/amartingarcia/notes/edit/master/docs/kubernetes/helm/sops.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sops">SOPS<a class="headerlink" href="#sops" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/mozilla/sops">SOPS</a> is a tool that allows the encryption of local files. For our use case we use a Key from Key Vault declared in the <strong>.sops.yaml</strong> file for file encryption.</p>
+<h2 id="sops-commands">SOPS Commands<a class="headerlink" href="#sops-commands" title="Permanent link">&para;</a></h2>
+<h3 id="show-file">Show file<a class="headerlink" href="#show-file" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">$ cat file.yaml
+---
+secrets:
+    admin-creds:
+        stringData:
+            user: user-fake
+            password: password-fake
+</code></pre>
+<h3 id="encrypt-file">Encrypt file<a class="headerlink" href="#encrypt-file" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">$ sops -e -i file.yaml
+$ cat file.yaml
+secrets:
+    admin-creds:
+        stringData:
+            user: ENC[AES256_GCM,data:qiZNFqw=,iv:n/rXJHTD8D8DD4iI3zF5JpjDeZKp+SPItQSq0ue5VXc=,tag:DeD5PA4OwbsmoSNzzdQtSg==,type:str]
+            password: ENC[AES256_GCM,data:7uDh0tJ0c/0VOw==,iv:ft33mHwy4zpmTvvq1mHOasy5/6rQR70Gv189IImeRoQ=,tag:9yP4pM8Y8oSwYCcuPso0jQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv:
+        - vault_url: &lt;vault-url&gt;
+          name: &lt;key-name&gt;
+          version: &lt;version-name&gt;
+          created_at: &quot;2022-10-20T09:33:41Z&quot;
+          enc: Z130UV0JoF4XLZHnJ-Y0hIHVfSLVqAGEr3niWMosL0vRF00TaoreX2bm_JLy8LvvxNKgS3jZXKW5RGujq4bA2_scKrAarkAvOhdg2N4CgykO1Yq4_9KP0ZbmD_FE0nzj3VN8fQsin5kOYrOPjVl5u1x8YLpsFQekt6E_Jj8TEcPaJPmj32sfdxvSWdASYxuJandU5o2aDeuZ_dkX6H9MaNdD68SJCNJQaSMm0IaWENVsyE24KaPKgkkqkXW8Pv92BtKw-Xgg6O2jYb4trokobkraE-Siaq0EwGbGPCi7zVlNH6ImPLG5vHTCLa9HEiG5Nd88A5OOA1yJ45f5NMpFug
+    hc_vault: []
+    age: []
+    lastmodified: &quot;2022-10-20T09:33:42Z&quot;
+    mac: ENC[AES256_GCM,data:cq4UrhEJq0x+66pZ7/Ga3DLeMohXnLiCiFOorF+cZYBJXviIj2Ncaw/jYTiEF3D5i8OBoZCz2O9pxSOpHHvrdiETvNfj/0/pGmPWmuflsPJ6Ehen8pKOdh91tJ0K2cBUWzym5X21SxcTjhjg1h8pIsK32e5mgWDu6Oai/G6gnjs=,iv:v6Ds1O2w8T5OE8X9wh8Q9Fez/Blwdxd87Wy7hSnoozM=,tag:a66zoL/C1U97tOE1/jI4cQ==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3
+</code></pre>
+<h3 id="decrypt-file">Decrypt file<a class="headerlink" href="#decrypt-file" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">$ sops -d -i file.yaml
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/amartingarcia/notes" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
