@@ -47,9 +47,11 @@ nav:
 #            - Terragrunt:
 #    - Kafka:
     - Kubernetes:
-#        - Helm:
-#            - helm-docs:
-#        - Helmfile: kubernetes/helmfile.md
+        - Helm: 
+            - kubernetes/helm/helm.md
+#            - helm-docs: kubernetes/helm/helm-docs.md
+            - Helmfile: kubernetes/helmfile.md
+            - SOPS: kubernetes/sops.md
 #        - Helmwave:
         - kOps: kubernetes/kops.md
 #    - Linux:
