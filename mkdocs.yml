@@ -11,13 +11,20 @@ nav:
 #    - BBDD:
 #        - Relational:
 #        - NoSQL:
-#    - CICD:
+    - CICD:
 #        - Azure Pipelines:
 #        - Bitbucket:
 #        - Github Actions:
 #        - GitlabCI:
-#        - Jenkins:
-#            - Jenkinsfile:
+        - Jenkins:
+            - cicd/jenkins/jenkins.md
+            - Jenkinsfile: 
+                - cicd/jenkins/jenkinsfile.md
+                - Example 1: cicd/jenkins/jenkinsfiles/jenkinsfile_1.md
+                - Example 2: cicd/jenkins/jenkinsfiles/jenkinsfile_2.md
+                - Example 3: cicd/jenkins/jenkinsfiles/jenkinsfile_3.md
+                - Example 4: cicd/jenkins/jenkinsfiles/jenkinsfile_4.md
+                - Example 5: cicd/jenkins/jenkinsfiles/jenkinsfile_5.md
 #    - Code:
 #        - Go:
 #        - Python:
