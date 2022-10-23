@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Adrián Martín García" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Example 1 - MyNotes</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Example 1";
+        var mkdocs_page_input_path = "cicd/jenkins/jenkinsfiles/jenkinsfile_1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/dockerfile.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MyNotes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CICD</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Jenkins</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../jenkins/">Jenkins</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Jenkinsfile</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../../jenkinsfile/">Jenkinsfiles</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Example 1</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../jenkinsfile_2/">Example 2</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../jenkinsfile_3/">Example 3</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../jenkinsfile_4/">Example 4</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../jenkinsfile_5/">Example 5</a>
+    <ul>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Git</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../git/multi_accounts/">Multi-accounts</a>
+    <ul>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Kubernetes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Helm</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../kubernetes/helm/helm/">Helm</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../../../kubernetes/helm/helm/#helm-charts">Helm Charts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helm/#directory-hierarchy">Directory hierarchy</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/">Helmfile</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#hierarchy">Hierarchy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#example-files">Example files</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#basesenvironmentsyaml">bases/environments.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#baseshelmdefaultsyaml">bases/helmDefaults.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#templatessopsyaml">templates/.sops.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#templatesdefault_valuesyaml">templates/default_values.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#helmfileyaml">helmfile.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#releasesmetrics-serverhelmfileyaml">releases/metrics-server/helmfile.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#releasesmetrics-serverdefaultsyaml">releases/metrics-server/defaults.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#releasesmetrics-serverenvsdevvaluesyaml">releases/metrics-server/envs/dev/values.yaml</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#releasesmetrics-serverenvsdevvaluesyamlgtmpl">releases/metrics-server/envs/dev/values.yaml.gtmpl</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#hemfile-commands">Hemfile Commands</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#rendering-dev-environment">Rendering dev environment</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#rendering-dev-environment-for-metrics-server">Rendering dev environment for metrics-server</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#diff-shows-differences-between-the-code-and-the-cluster">Diff. Shows differences between the code and the cluster</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#sync-install-metrics-server-release">Sync (Install) metrics-server release</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/helmfile/#delete-metrics-server-release">Delete metrics-server release</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../kubernetes/helm/sops/">SOPS</a>
+    <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../../../kubernetes/helm/sops/#sops-commands">SOPS Commands</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/sops/#show-file">Show file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/sops/#encrypt-file">Encrypt file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../../../kubernetes/helm/sops/#decrypt-file">Decrypt file</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../kubernetes/kops/">kOps</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../../../kubernetes/kops/#example-file">Example file</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QA</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../qa/semantic_release/">Semantic Release</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../../../qa/semantic_release/#how-semantic-selease-works">How Semantic Selease works</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MyNotes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>CICD &raquo;</li>
+          <li>Jenkins &raquo;</li>
+          <li>Jenkinsfile &raquo;</li>
+      <li>Example 1</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/amartingarcia/notes/edit/master/docs/cicd/jenkins/jenkinsfiles/jenkinsfile_1.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h1>
+<pre><code class="language-groovy">// Available environments in which it can be deployed
+ENVIRONMENTS = [
+  &quot;DEV&quot;: [
+    &quot;KUBERNETES&quot;: &quot;&lt;kubernetes-agent&gt;&quot;,
+    &quot;POD&quot;:        &quot;pod.yaml&quot;,
+    &quot;LABEL&quot;:      &quot;label&quot;
+  ],
+  &quot;PRO&quot;: [
+    &quot;KUBERNETES&quot;: &quot;&lt;kubernetes-agent&gt;&quot;,
+    &quot;POD&quot;:        &quot;pod.yaml&quot;,
+    &quot;LABEL&quot;:      &quot;label&quot;
+  ],
+]
+
+pipeline {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start pipeline                                                                //
+/////////////////////////////////////////////////////////////////////////////////////
+
+options {
+  // It allows to keep the pipeline, for 8 hours.
+  timeout(time: 8, unit: 'HOURS')
+  disableConcurrentBuilds()
+}
+
+parameters {
+  // Gets a list of available environments to deploy, and offers them as input parameters
+  choice(name: 'environment', choices: ENVIRONMENTS.keySet() as List, description: 'Environment where deploy' )
+}
+
+triggers { 
+  // UTC - will take place between 23:01 and 23:09 UTC+2 (&quot;H&quot; allows you to choose from a range of time) 
+  cron( env.BRANCH_NAME.equals('main')  ? 'H(1-29) 21 * * *' : '')
+}
+
+// By default everything runs in the cluster. Except the execution of the scripts.
+agent {
+  kubernetes {
+    cloud &quot;&lt;kubernetes-agent&gt;&quot;
+    label &quot;label-${env.BRANCH_NAME}-${env.BUILD_NUMBER}&quot;
+    yamlFile &quot;pod.yaml&quot;
+    defaultContainer &quot;alpine&quot;
+  }
+}
+
+stages {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start stages                                                                  //
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Stage that allows the creation of tags through semantic-release
+stage('Semantic Release') {
+  when {
+    // It will only be executed when it is built in any of the defined branches
+    anyOf{
+      branch &quot;main&quot;
+      branch &quot;dev&quot;
+    }
+    beforeAgent true
+  }
+  steps {
+    container('node'){
+      withCredentials([
+      sshUserPrivateKey(credentialsId: 'credential-id', keyFileVariable: 'credential-key-file')]) {
+        sh &quot;&quot;&quot;
+          export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${credential-key-file}'
+          apk add nodejs npm git openssh bash coreutils
+          npm install -g semantic-release semantic-release/git -D
+          semantic-release --debug --plugins &quot;@semantic-release/git&quot;
+        &quot;&quot;&quot;
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+// Stage that allows to obtain the last tag created in the repository, and to build it
+stage('Calling tag job: PRO') {
+  when {
+    allOf{
+      branch &quot;main&quot;
+      triggeredBy 'TimerTrigger'
+    }
+    beforeAgent true
+  }
+  steps {
+    container('alpine'){
+      // Get the last tag created for main branch. Example, main: v1.1.1.
+    script{
+      sh 'apk add coreutils git'
+      MAIN_GIT_LATEST_TAG = sh (
+        script: &quot;git tag | sort --version-sort | grep -vi 'dev' | tail -1&quot;,
+        returnStdout: true
+      ).trim()
+        print(&quot;debug(MAIN_GIT_LATEST_TAG): &quot; + MAIN_GIT_LATEST_TAG)
+    }
+    // It will run the job, with the last tag created for the main branch.
+    build job: &quot;devops/job/${MAIN_GIT_LATEST_TAG}&quot;, wait: false,
+      parameters: [
+        string(name: 'environment',    value: 'PRO'  )
+      ]
+    }
+  } // `step` closing
+} // `stage` closing
+
+// Stage that allows to install all the necessary packages to execute the script
+stage('Preparing workspace') {
+  when {
+    allOf{
+      tag pattern: &quot;^v\\d+.\\d+.\\d+(-[0-9a-zA-Z\\.]+)?\$&quot;, comparator: &quot;REGEXP&quot;
+    }
+  }
+  steps {
+    container('python'){
+      // Prepare apk cache
+    sh '''
+      mkdir $WORKSPACE/apt-cache
+      ln -sf /var/cache/apt $WORKSPACE/apt-cache
+      apt update
+    '''
+    // Download Python dependencies while builinding virtualenv
+    sh '''
+      apt install -y virtualenv
+    '''
+    // Prepare virtualenv
+    sh '''
+      mkdir $WORKSPACE/virtualenv
+      virtualenv -p python3 virtualenv/.venv
+      $WORKSPACE/virtualenv/.venv/bin/pip3 install wheel
+      $WORKSPACE/virtualenv/.venv/bin/pip3 install -r $WORKSPACE/requirements.txt
+    '''
+    // Stash created environment
+    stash includes: 'apt-cache/**',  name: 'apt-cache'
+    stash includes: 'virtualenv/**', name: 'virtualenv'
+    }
+  } // `step` closing
+} // `stage` closing
+
+// Stage that allows to execute the script
+stage('Deploy environment') {
+  agent {
+    // Will obtain the data of the selected environment during the construction of the tag in Jenkins
+    kubernetes {
+      cloud ENVIRONMENTS[params.environment][&quot;KUBERNETES&quot;]
+      label ENVIRONMENTS[params.environment][&quot;LABEL&quot;]
+      yamlFile ENVIRONMENTS[params.environment][&quot;POD&quot;]
+    }
+  }
+  when {
+    allOf{
+      // will only run if the regex matches
+      tag pattern: &quot;^v\\d+.\\d+.\\d+(-[0-9a-zA-Z\\.]+)?\$&quot;, comparator: &quot;REGEXP&quot;
+    }
+    beforeAgent true
+  }
+  steps {
+    container('python'){
+      // Unstash files from cluster
+      unstash 'apt-cache'
+      unstash 'virtualenv'
+      retry(3){
+        sh 'ln -sf $WORKSPACE/apt-cache/apt /var/cache/apt'
+        sh 'apt update &amp;&amp; apt install -y virtualenv'
+        // Data source with the variables necessary for the execution of the script
+        sh '''#!/bin/bash
+          echo &quot;Exec script&quot;
+        '''
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+} // `all stages` closing 
+
+post {
+  // If the execution of the pipeline failed or aborted, an email will be sent to the recipients.
+  failure {
+    mail body: &quot;&lt;b&gt;Jenkins&lt;/b&gt;&lt;br&gt;Project: ${env.JOB_NAME} &lt;br&gt;Build Number: ${env.BUILD_NUMBER} &lt;br&gt; URL build: ${env.BUILD_URL}&quot;,
+    subject: &quot;Jenkins Build Failed: Project name -&gt; ${env.JOB_NAME}&quot;,
+    mimeType: 'text/html',
+    to: &quot;&quot;
+  }
+  aborted {
+    mail body: &quot;&lt;b&gt;Jenkins&lt;/b&gt;&lt;br&gt;Project: ${env.JOB_NAME} &lt;br&gt;Build Number: ${env.BUILD_NUMBER} &lt;br&gt; URL build: ${env.BUILD_URL}&quot;,
+    subject: &quot;Jenkins Build Aborted: Project name -&gt; ${env.JOB_NAME}&quot;,
+    mimeType: 'text/html',
+    to: &quot;&quot;
+  }
+} // `post actions` closing
+
+} // `pipeline` closing
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../jenkinsfile/" class="btn btn-neutral float-left" title="Jenkinsfiles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../jenkinsfile_2/" class="btn btn-neutral float-right" title="Example 2">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/amartingarcia/notes" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../jenkinsfile/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../jenkinsfile_2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme_extra.js" defer></script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

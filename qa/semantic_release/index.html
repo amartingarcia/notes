@@ -48,6 +48,45 @@
     </ul>
                 </li>
               </ul>
+              <p class="caption"><span class="caption-text">CICD</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Jenkins</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../cicd/jenkins/jenkins/">Jenkins</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Jenkinsfile</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../cicd/jenkins/jenkinsfile/">Jenkinsfiles</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cicd/jenkins/jenkinsfiles/jenkinsfile_1/">Example 1</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cicd/jenkins/jenkinsfiles/jenkinsfile_2/">Example 2</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cicd/jenkins/jenkinsfiles/jenkinsfile_3/">Example 3</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cicd/jenkins/jenkinsfiles/jenkinsfile_4/">Example 4</a>
+    <ul>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cicd/jenkins/jenkinsfiles/jenkinsfile_5/">Example 5</a>
+    <ul>
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+              </ul>
               <p class="caption"><span class="caption-text">Git</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../git/multi_accounts/">Multi-accounts</a>
@@ -173,7 +212,10 @@
                 <h1 id="semantic-release">Semantic Release<a class="headerlink" href="#semantic-release" title="Permanent link">&para;</a></h1>
 <p>Semantic-release is an application created in nodejs, it allows to analyze the commits of a repository for the creation of tags. This allows greater control over the code displayed.</p>
 <h2 id="how-semantic-selease-works">How Semantic Selease works<a class="headerlink" href="#how-semantic-selease-works" title="Permanent link">&para;</a></h2>
-<hr />
+<p>semantic-release uses the commit messages to determine the consumer impact of changes in the codebase. Following formalized conventions for commit messages, semantic-release automatically determines the next semantic version number, generates a changelog and publishes the release.</p>
+<p>By default, semantic-release uses <a href="https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format">Angular Commit Message Conventions</a>. The commit message format can be changed with the preset or config options of the <a href="https://github.com/semantic-release/commit-analyzer#options">@semantic-release/commit-analyzer</a> and <a href="https://github.com/semantic-release/release-notes-generator#options">@semantic-release/release-notes-generator</a> plugins.</p>
+<p>Tools such as commitizen or commitlint can be used to help contributors and enforce valid commit messages.</p>
+<p>The table below shows which commit message gets you which release type when semantic-release runs (using the default configuration):</p>
 <p>Starting with v1.0.0:</p>
 <table>
 <thead>
