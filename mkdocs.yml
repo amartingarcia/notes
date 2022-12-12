@@ -79,6 +79,12 @@ nav:
 #        - Openstack:
     - QA:
         - Semantic Release: qa/semantic_release.md
+    - Security:
+        - Keycloak: 
+            - security/keycloak.md
+            - Jenkins: security/keycloak_jenkins.md
+            - Nexus: security/keycloak_nexus.md
+            - Sonarqube: security/keycloak_sonarqube.md
 
 theme:
   name: readthedocs

@@ -1,3 +1,9 @@
+---
+title: Git - Multi-accounts
+date: 20221212
+author: Adrián Martín García
+---
+
 # Multi-Accounts
 Sometimes it may be necessary to set up different git accounts for different directories.
 In my computer I use the following configuration:
