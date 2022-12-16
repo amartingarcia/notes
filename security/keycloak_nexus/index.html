@@ -298,23 +298,23 @@
 <p>First we will need to configure Keycloak. We will assume that we have a new Realm called <code>Factory</code>.</p>
 <h3 id="keycloak-clients">Keycloak - Clients<a class="headerlink" href="#keycloak-clients" title="Permanent link">&para;</a></h3>
 <p>Create <code>nexus</code> user.</p>
-<p><img alt="notes" src="../../images/security_keycloak_nexus_client_01.png" /></p>
+<p><img alt="notes" src="../../images/security/keycloak/nexus_client_01.png" /></p>
 <p>Configure <code>Service account roles</code>.<br />
-<img alt="notes" src="../../images/security_keycloak_nexus_client_02.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/nexus_client_02.png" /></p>
 <p>Configure <code>Roles</code><br />
-<img alt="notes" src="../../images/security_keycloak_nexus_client_03.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/nexus_client_03.png" /></p>
 <h4 id="sa-for-roles">SA for roles<a class="headerlink" href="#sa-for-roles" title="Permanent link">&para;</a></h4>
 <p>Assign roles to <code>nexus</code> user for view realms, users and clients.<br />
-<img alt="notes" src="../../images/security_keycloak_nexus_client_sa_roles.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/nexus_client_sa_roles.png" /></p>
 <h3 id="keycloak-groups">Keycloak - Groups<a class="headerlink" href="#keycloak-groups" title="Permanent link">&para;</a></h3>
 <p>Create <code>nx-admin</code> group with <code>Role Mappins</code>.<br />
-<img alt="notes" src="../../images/security_keycloak_nexus_groups.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/nexus_groups.png" /></p>
 <h3 id="keycloak-users">Keycloak - Users<a class="headerlink" href="#keycloak-users" title="Permanent link">&para;</a></h3>
 <p>Join user to a <code>nx-admin</code> group.<br />
-<img alt="notes" src="../../images/security_keycloak_nexus_users.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/nexus_users.png" /></p>
 <h3 id="nexus_1">Nexus<a class="headerlink" href="#nexus_1" title="Permanent link">&para;</a></h3>
 <p>Download Keycloak conection adaptor for client.<br />
-<img alt="notes" src="../../images/security_keycloak_jenkins_client_adapter.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/jenkins_client_adapter.png" /></p>
 <p>The YAML file for the Helm Chart is:</p>
 <pre><code class="language-yaml">image:
   # Bug: https://github.com/sonatype/docker-nexus3/pull/148
@@ -410,13 +410,13 @@ ingress:
 </code></pre>
 <h4 id="nexus-groups">Nexus - Groups<a class="headerlink" href="#nexus-groups" title="Permanent link">&para;</a></h4>
 <p><code>nx-admin</code> group already exists.<br />
-<img alt="notes" src="../../images/security_keycloak_nexus_role_groups.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/nexus_role_groups.png" /></p>
 <h4 id="nexus-realms">Nexus - Realms<a class="headerlink" href="#nexus-realms" title="Permanent link">&para;</a></h4>
 <p>Active <code>Keycloak Authentication</code> Realm.<br />
-<img alt="notes" src="../../images/security_keycloak_nexus_realms.png" /></p>
+<img alt="notes" src="../../images/security/keycloak/nexus_realms.png" /></p>
 <h2 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h2>
-<p><img alt="notes" src="../../images/security_keycloak_nexus_login_01.png" /><br />
-<img alt="notes" src="../../images/security_keycloak_nexus_login_02.png" /></p>
+<p><img alt="notes" src="../../images/security/keycloak/nexus_login_01.png" /><br />
+<img alt="notes" src="../../images/security/keycloak/nexus_login_02.png" /></p>
               
             </div>
           </div><footer>
