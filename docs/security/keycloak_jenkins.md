@@ -20,20 +20,20 @@ First we will need to configure Keycloak. We will assume that we have a new Real
 ### Keycloak - Clients
 Create `jenkins` user.
 
-![notes](../images/security_keycloak_jenkins_clients.png)
+![notes](../images/security/keycloak/jenkins_clients.png)
 
 ### Keycloak - Groups
 Create `jenkins_administrators` and `jenkins_readonly` groups.
 
-![notes](../images/security_keycloak_jenkins_groups.png)
+![notes](../images/security/keycloak/jenkins_groups.png)
 
 ### Keycloak - Users
 Join user to a `jenkins_administrators` group.
-![notes](../images/security_keycloak_jenkins_users.png)
+![notes](../images/security/keycloak/jenkins_users.png)
 
 ### Jenkins
 Download Keycloak conection adaptor for client.
-![notes](../images/security_keycloak_jenkins_client_adapter.png)
+![notes](../images/security/keycloak/jenkins_client_adapter.png)
 
 The YAML file for the Helm Chart is:
 ```yaml
@@ -264,7 +264,7 @@ controller:
 ```
 #### Jenkins - Groups
 Create Groups on Jenkins.
-![notes](../images/security_keycloak_jenkins_role_groups.png)
+![notes](../images/security/keycloak/jenkins_role_groups.png)
 
 ## Login
-![notes](../images/security_keycloak_jenkins_login.png)
+![notes](../images/security/keycloak/jenkins_login.png)

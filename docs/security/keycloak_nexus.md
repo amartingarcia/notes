@@ -17,30 +17,30 @@ First we will need to configure Keycloak. We will assume that we have a new Real
 ### Keycloak - Clients
 Create `nexus` user.
 
-![notes](../images/security_keycloak_nexus_client_01.png)
+![notes](../images/security/keycloak/nexus_client_01.png)
 
 
 Configure `Service account roles`.
-![notes](../images/security_keycloak_nexus_client_02.png)
+![notes](../images/security/keycloak/nexus_client_02.png)
 
 Configure `Roles`
-![notes](../images/security_keycloak_nexus_client_03.png)
+![notes](../images/security/keycloak/nexus_client_03.png)
 
 #### SA for roles
 Assign roles to `nexus` user for view realms, users and clients.
-![notes](../images/security_keycloak_nexus_client_sa_roles.png)
+![notes](../images/security/keycloak/nexus_client_sa_roles.png)
 
 ### Keycloak - Groups
 Create `nx-admin` group with `Role Mappins`.
-![notes](../images/security_keycloak_nexus_groups.png)
+![notes](../images/security/keycloak/nexus_groups.png)
 
 ### Keycloak - Users
 Join user to a `nx-admin` group.
-![notes](../images/security_keycloak_nexus_users.png)
+![notes](../images/security/keycloak/nexus_users.png)
 
 ### Nexus
 Download Keycloak conection adaptor for client.
-![notes](../images/security_keycloak_jenkins_client_adapter.png)
+![notes](../images/security/keycloak/jenkins_client_adapter.png)
 
 The YAML file for the Helm Chart is:
 ```yaml
@@ -139,12 +139,12 @@ ingress:
 
 #### Nexus - Groups
 `nx-admin` group already exists.
-![notes](../images/security_keycloak_nexus_role_groups.png)
+![notes](../images/security/keycloak/nexus_role_groups.png)
 
 #### Nexus - Realms
 Active `Keycloak Authentication` Realm.
-![notes](../images/security_keycloak_nexus_realms.png)
+![notes](../images/security/keycloak/nexus_realms.png)
 
 ## Login
-![notes](../images/security_keycloak_nexus_login_01.png)
-![notes](../images/security_keycloak_nexus_login_02.png)
+![notes](../images/security/keycloak/nexus_login_01.png)
+![notes](../images/security/keycloak/nexus_login_02.png)

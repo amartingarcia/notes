@@ -16,24 +16,24 @@ First we will need to configure Keycloak. We will assume that we have a new Real
 
 ### Keycloak - Clients
 Create `sonarqube` user.
-![notes](../images/security_keycloak_sonarqube_clients.png)
+![notes](../images/security/keycloak/sonarqube_clients.png)
 
 #### Client Scope
 Declare `Groups` scope.
-![notes](../images/security_keycloak_sonarqube_client_scope.png)
+![notes](../images/security/keycloak/sonarqube_client_scope.png)
 
 ### Keycloak - Groups
 Create `sonar-administrators` and `sonar-users` groups.
-![notes](../images/security_keycloak_sonarqube_groups.png)
+![notes](../images/security/keycloak/sonarqube_groups.png)
 
 ### Keycloak - Users
 Join user to a `sonar-administrators` group.
-![notes](../images/security_keycloak_sonarqube_users.png)
+![notes](../images/security/keycloak/sonarqube_users.png)
 
 ### Keycloak - Mappers
 Create a `Mapper` for `Groups`.
-![notes](../images/security_keycloak_sonarqube_mappers_01.png)
-![notes](../images/security_keycloak_sonarqube_mappers_02.png)
+![notes](../images/security/keycloak/sonarqube_mappers_01.png)
+![notes](../images/security/keycloak/sonarqube_mappers_02.png)
 
 ### Sonarqube
 The YAML file for the Helm Chart is:
@@ -76,8 +76,8 @@ account:
 
 #### Sonarqube - Groups
 `sonar-administrators` and `sonar-users` groups already exists.
-![notes](../images/security_keycloak_sonarqube_role_groups.png)
+![notes](../images/security/keycloak/sonarqube_role_groups.png)
 
 ## Login
-![notes](../images/security_keycloak_sonarqube_login_01.png)
-![notes](../images/security_keycloak_sonarqube_login_02.png)
+![notes](../images/security/keycloak/sonarqube_login_01.png)
+![notes](../images/security/keycloak/sonarqube_login_02.png)

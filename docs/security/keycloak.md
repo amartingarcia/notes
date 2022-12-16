@@ -125,4 +125,4 @@ secrets:
 ![notes](../images/security_keycloak_main.png)
 
 ## Configure Microsoft Azure as Identity Provider
-![notes](../images/security_keycloak_azure.png)
+![notes](../images/security/keycloak/azure.png)
