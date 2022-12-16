@@ -23,12 +23,15 @@ Create `nexus` user.
 Configure `Service account roles`.
 ![notes](../images/security_keycloak_nexus_client_02.png)
 
+Configure `Roles`
+![notes](../images/security_keycloak_nexus_client_03.png)
+
 #### SA for roles
 Assign roles to `nexus` user for view realms, users and clients.
 ![notes](../images/security_keycloak_nexus_client_sa_roles.png)
 
 ### Keycloak - Groups
-Create `nx-admin` group.
+Create `nx-admin` group with `Role Mappins`.
 ![notes](../images/security_keycloak_nexus_groups.png)
 
 ### Keycloak - Users
