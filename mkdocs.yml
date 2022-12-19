@@ -100,6 +100,7 @@ theme:
   hljs_languages:
     - yaml
     - dockerfile
+    - groovy
 
 markdown_extensions:
   # meta, toc, table and fenced_code extensions are included by default
