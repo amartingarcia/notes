@@ -11,7 +11,7 @@ nav:
 #    - BBDD:
 #        - Relational:
 #        - NoSQL:
-    - CICD:
+    - CI/CD:
 #        - Azure Pipelines:
 #        - Bitbucket:
 #        - Github Actions:
@@ -54,12 +54,16 @@ nav:
 #            - Terragrunt:
 #    - Kafka:
     - Kubernetes:
+        - Certifications:
+            - CKA: kubernetes/certifications/cka.md
+            - CKAD: kubernetes/certifications/ckad.md
+            - CKS: kubernetes/certifications/cks.md
         - Helm: 
             - kubernetes/helm/helm.md
-#            - helm-docs: kubernetes/helm/helm-docs.md
+            - helm-docs: kubernetes/helm/helm-docs.md
             - Helmfile: kubernetes/helm/helmfile.md
             - SOPS: kubernetes/helm/sops.md
-#        - Helmwave:
+        - Helmwave: kubernetes/helmwave.md
         - kOps: kubernetes/kops.md
 #    - Linux:
 #    - Monitoring:
@@ -79,6 +83,8 @@ nav:
 #        - Openstack:
     - QA:
         - Semantic Release: qa/semantic_release.md
+        - Nexus: qa/nexus.md
+        - Sonarqube: qa/sonarqube.md
     - Security:
         - Keycloak: 
             - security/keycloak.md
