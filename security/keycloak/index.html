@@ -213,7 +213,15 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#login">Login</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#configure-microsoft-azure-as-identity-provider">Configure Microsoft Azure as Identity Provider</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#app-registration">App Registration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#keycloak-indentity-provider">Keycloak Indentity Provider</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -223,11 +231,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="../keycloak_jenkins/#configuration">Configuration</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak-clients">Keycloak - Clients</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak-groups">Keycloak - Groups</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak-users">Keycloak - Users</a>
+    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak">Keycloak</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#jenkins_1">Jenkins</a>
     </li>
@@ -243,11 +247,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="../keycloak_nexus/#configuration">Configuration</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_nexus/#keycloak-clients">Keycloak - Clients</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_nexus/#keycloak-groups">Keycloak - Groups</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_nexus/#keycloak-users">Keycloak - Users</a>
+    <li class="toctree-l4"><a class="reference internal" href="../keycloak_nexus/#keycloak">Keycloak</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="../keycloak_nexus/#nexus_1">Nexus</a>
     </li>
@@ -263,13 +263,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="../keycloak_sonarqube/#configuration">Configuration</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-clients">Keycloak - Clients</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-groups">Keycloak - Groups</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-users">Keycloak - Users</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-mappers">Keycloak - Mappers</a>
+    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak">Keycloak</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#sonarqube_1">Sonarqube</a>
     </li>
@@ -418,9 +412,16 @@ secrets:
         stringData:
             realm.json: &lt;realm-file&gt; 
 </code></pre>
-<p><img alt="notes" src="../images/security_keycloak_main.png" /></p>
+<h2 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h2>
+<p><img alt="notes" src="../../images/security/keycloak/main.png" /></p>
 <h2 id="configure-microsoft-azure-as-identity-provider">Configure Microsoft Azure as Identity Provider<a class="headerlink" href="#configure-microsoft-azure-as-identity-provider" title="Permanent link">&para;</a></h2>
-<p><img alt="notes" src="../../images/security/keycloak/azure.png" /></p>
+<h3 id="app-registration">App Registration<a class="headerlink" href="#app-registration" title="Permanent link">&para;</a></h3>
+<p>Create your Azure App Registration with the following config:<br />
+<img alt="notes" src="../../images/security/keycloak/azure_app_registration_authentication.png" /></p>
+<p><img alt="notes" src="../../images/security/keycloak/azure_app_registration_secrets.png" /></p>
+<h3 id="keycloak-indentity-provider">Keycloak Indentity Provider<a class="headerlink" href="#keycloak-indentity-provider" title="Permanent link">&para;</a></h3>
+<p>Create provider with the data for Azure App Registration.<br />
+<img alt="notes" src="../../images/security/keycloak/azure.png" /></p>
               
             </div>
           </div><footer>

@@ -213,7 +213,15 @@
     <ul>
     <li class="toctree-l3"><a class="reference internal" href="../keycloak/#installation">Installation</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="../keycloak/#login">Login</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="../keycloak/#configure-microsoft-azure-as-identity-provider">Configure Microsoft Azure as Identity Provider</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../keycloak/#app-registration">App Registration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../keycloak/#keycloak-indentity-provider">Keycloak Indentity Provider</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -223,11 +231,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="../keycloak_jenkins/#configuration">Configuration</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak-clients">Keycloak - Clients</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak-groups">Keycloak - Groups</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak-users">Keycloak - Users</a>
+    <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#keycloak">Keycloak</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="../keycloak_jenkins/#jenkins_1">Jenkins</a>
     </li>
@@ -243,11 +247,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#keycloak-clients">Keycloak - Clients</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#keycloak-groups">Keycloak - Groups</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#keycloak-users">Keycloak - Users</a>
+    <li class="toctree-l4"><a class="reference internal" href="#keycloak">Keycloak</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#nexus_1">Nexus</a>
     </li>
@@ -263,13 +263,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="../keycloak_sonarqube/#configuration">Configuration</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-clients">Keycloak - Clients</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-groups">Keycloak - Groups</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-users">Keycloak - Users</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak-mappers">Keycloak - Mappers</a>
+    <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#keycloak">Keycloak</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="../keycloak_sonarqube/#sonarqube_1">Sonarqube</a>
     </li>
@@ -309,33 +303,36 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="nexus">Nexus<a class="headerlink" href="#nexus" title="Permanent link">&para;</a></h1>
-<p>Nexus Repository OSS is an open source repository that supports many artifact formats, including Docker, Java™, and npm. With the Nexus tool integration, pipelines in your toolchain can publish and retrieve versioned apps and their dependencies by using central repositories that are accessible from other environments.</p>
+<p>In this page we define the configuration for a correct integration between Nexus and Keycloak.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/sonatype/nxrm3-helm-repository/tree/main/nexus-repository-manager">Nexus</a></li>
 <li><a href="https://github.com/flytreeleft/nexus3-keycloak-plugin">Keycloak Plugin</a></li>
 </ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>First we will need to configure Keycloak. We will assume that we have a new Realm called <code>Factory</code>.</p>
-<h3 id="keycloak-clients">Keycloak - Clients<a class="headerlink" href="#keycloak-clients" title="Permanent link">&para;</a></h3>
-<p>Create <code>nexus</code> user.</p>
+<p>First we will need to configure Keycloak. We will assume that we have a new Realm called <strong>Factory</strong>.</p>
+<h3 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h3>
+<h4 id="clients">Clients<a class="headerlink" href="#clients" title="Permanent link">&para;</a></h4>
+<p>Create <strong>nexus</strong> user.</p>
 <p><img alt="notes" src="../../images/security/keycloak/nexus_client_01.png" /></p>
-<p>Configure <code>Service account roles</code>.<br />
+<p>Configure the capabilities.<br />
 <img alt="notes" src="../../images/security/keycloak/nexus_client_02.png" /></p>
-<p>Configure <code>Roles</code><br />
+<p>Configure <strong>Roles</strong>.<br />
 <img alt="notes" src="../../images/security/keycloak/nexus_client_03.png" /></p>
-<h4 id="sa-for-roles">SA for roles<a class="headerlink" href="#sa-for-roles" title="Permanent link">&para;</a></h4>
-<p>Assign roles to <code>nexus</code> user for view realms, users and clients.<br />
+<p>Assign roles to <strong>nexus</strong> user for view realms, users and clients.<br />
 <img alt="notes" src="../../images/security/keycloak/nexus_client_sa_roles.png" /></p>
-<h3 id="keycloak-groups">Keycloak - Groups<a class="headerlink" href="#keycloak-groups" title="Permanent link">&para;</a></h3>
-<p>Create <code>nx-admin</code> group with <code>Role Mappins</code>.<br />
+<h4 id="groups">Groups<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h4>
+<p>Create <strong>nx-admin</strong> group with <strong>Role Mappins</strong>.<br />
 <img alt="notes" src="../../images/security/keycloak/nexus_groups.png" /></p>
-<h3 id="keycloak-users">Keycloak - Users<a class="headerlink" href="#keycloak-users" title="Permanent link">&para;</a></h3>
-<p>Join user to a <code>nx-admin</code> group.<br />
+<h4 id="users">Users<a class="headerlink" href="#users" title="Permanent link">&para;</a></h4>
+<p>Join user to a <strong>nx-admin</strong> group.<br />
 <img alt="notes" src="../../images/security/keycloak/nexus_users.png" /></p>
 <h3 id="nexus_1">Nexus<a class="headerlink" href="#nexus_1" title="Permanent link">&para;</a></h3>
+<p>At this point we define the necessary configuration in Nexus to be able to perform the integration with Keycloak.</p>
+<h4 id="download-adapter-config">Download adapter config<a class="headerlink" href="#download-adapter-config" title="Permanent link">&para;</a></h4>
 <p>Download Keycloak conection adaptor for client.<br />
 <img alt="notes" src="../../images/security/keycloak/jenkins_client_adapter.png" /></p>
+<h4 id="configuration_1">Configuration<a class="headerlink" href="#configuration_1" title="Permanent link">&para;</a></h4>
 <p>The YAML file for the Helm Chart is:</p>
 <pre><code class="language-yaml">image:
   # Bug: https://github.com/sonatype/docker-nexus3/pull/148
