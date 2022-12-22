@@ -5,37 +5,43 @@ author: Adrián Martín García
 ---
 
 # Sonarqube
-SonarQube is an open source platform for continuous code quality inspection through different static source code analysis tools.
+In this page we define the configuration for a correct integration between Sonarqube and Keycloak.
 
 ## Requirements
 * [Sonarqube](https://github.com/SonarSource/helm-chart-sonarqube/tree/master/charts/sonarqube)
 * [Plugin](https://github.com/vaulttec/sonar-auth-oidc)
 
 ## Configuration
-First we will need to configure Keycloak. We will assume that we have a new Realm called `Factory`.
+First we will need to configure Keycloak. We will assume that we have a new Realm called **Factory**.
 
-### Keycloak - Clients
-Create `sonarqube` user.
+### Keycloak
+#### Clients
+Create **sonarqube** user.
 ![notes](../images/security/keycloak/sonarqube_clients.png)
 
 #### Client Scope
-Declare `Groups` scope.
+Declare **Groups** scope in client.
 ![notes](../images/security/keycloak/sonarqube_client_scope.png)
 
-### Keycloak - Groups
-Create `sonar-administrators` and `sonar-users` groups.
+#### Groups
+Create groups:
+
+* **sonar-administrators**
 ![notes](../images/security/keycloak/sonarqube_groups.png)
 
-### Keycloak - Users
-Join user to a `sonar-administrators` group.
+#### Users
+Join user to a **sonar-administrators** group.
 ![notes](../images/security/keycloak/sonarqube_users.png)
 
-### Keycloak - Mappers
-Create a `Mapper` for `Groups`.
+#### Mappers
+Create a **Mapper** in **Identity Provider**.
 ![notes](../images/security/keycloak/sonarqube_mappers_01.png)
 ![notes](../images/security/keycloak/sonarqube_mappers_02.png)
 
 ### Sonarqube
+At this point we define the necessary configuration in Sonarqube to be able to perform the integration with Keycloak.
+
+#### Configuration
 The YAML file for the Helm Chart is:
 ```yaml
 ingress:

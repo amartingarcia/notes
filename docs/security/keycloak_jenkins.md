@@ -5,9 +5,7 @@ author: Adrián Martín García
 ---
 
 # Jenkins
-Jenkins is an open source server for continuous integration. It is a tool used to compile and test software projects continuously, which makes it easier for developers to integrate changes in a project and deliver new versions to users. Written in Java, it is cross-platform and accessible through a web interface. It is currently the most widely used software for this purpose.
-
-This page will be used to authenticate in Jenkins through Keycloak.
+In this page we define the configuration for a correct integration between Jenkins and Keycloak.
 
 ## Requirements
 * [Jenkins 4.2.9](https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins)
@@ -15,26 +13,44 @@ This page will be used to authenticate in Jenkins through Keycloak.
 * [role-strategy:569.v7476f8e4fe29](https://plugins.jenkins.io/role-strategy/)
 
 ## Configuration
-First we will need to configure Keycloak. We will assume that we have a new Realm called `Factory`.
+First we will need to configure Keycloak. We will assume that we have a new Realm called **Factory**.
 
-### Keycloak - Clients
-Create `jenkins` user.
+### Keycloak
+#### Clients
+Create **jenkins** client.
 
 ![notes](../images/security/keycloak/jenkins_clients.png)
 
-### Keycloak - Groups
-Create `jenkins_administrators` and `jenkins_readonly` groups.
+#### Realm roles
+Create Realm roles:
+
+* **jenkins_administrators**
+* **jenkins_readonly**
+
+![notes](../images/security/keycloak/jenkins_realm_roles.png)
+
+#### Groups
+Create groups:
+
+* **jenkins_administrators**
+* **jenkins_readonly**
 
 ![notes](../images/security/keycloak/jenkins_groups.png)
 
-### Keycloak - Users
-Join user to a `jenkins_administrators` group.
+And assign **Role mapping** in each group. For example:
+![notes](../images/security/keycloak/jenkins_groups_role_mapping.png)
+
+#### Users
+Join user to a **jenkins_administrators** group.
 ![notes](../images/security/keycloak/jenkins_users.png)
 
 ### Jenkins
-Download Keycloak conection adaptor for client.
+At this point we define the necessary configuration in Jenkins to be able to perform the integration with Keycloak.
+
+#### Download adapter config
 ![notes](../images/security/keycloak/jenkins_client_adapter.png)
 
+#### Configuration
 The YAML file for the Helm Chart is:
 ```yaml
 

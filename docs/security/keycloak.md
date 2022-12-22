@@ -122,7 +122,16 @@ secrets:
             realm.json: <realm-file> 
 ```
 
-![notes](../images/security_keycloak_main.png)
+## Login
+![notes](../images/security/keycloak/main.png)
 
 ## Configure Microsoft Azure as Identity Provider
+### App Registration
+Create your Azure App Registration with the following config:
+![notes](../images/security/keycloak/azure_app_registration_authentication.png)
+
+![notes](../images/security/keycloak/azure_app_registration_secrets.png)
+
+### Keycloak Indentity Provider
+Create provider with the data for Azure App Registration.
 ![notes](../images/security/keycloak/azure.png)

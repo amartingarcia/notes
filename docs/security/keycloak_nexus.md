@@ -5,43 +5,47 @@ author: Adrián Martín García
 ---
 
 # Nexus
-Nexus Repository OSS is an open source repository that supports many artifact formats, including Docker, Java™, and npm. With the Nexus tool integration, pipelines in your toolchain can publish and retrieve versioned apps and their dependencies by using central repositories that are accessible from other environments.
+In this page we define the configuration for a correct integration between Nexus and Keycloak.
 
 ## Requirements
 * [Nexus](https://github.com/sonatype/nxrm3-helm-repository/tree/main/nexus-repository-manager)
 * [Keycloak Plugin](https://github.com/flytreeleft/nexus3-keycloak-plugin)
 
 ## Configuration
-First we will need to configure Keycloak. We will assume that we have a new Realm called `Factory`.
+First we will need to configure Keycloak. We will assume that we have a new Realm called **Factory**.
 
-### Keycloak - Clients
-Create `nexus` user.
+### Keycloak
+#### Clients
+Create **nexus** user.
 
 ![notes](../images/security/keycloak/nexus_client_01.png)
 
 
-Configure `Service account roles`.
+Configure the capabilities.
 ![notes](../images/security/keycloak/nexus_client_02.png)
 
-Configure `Roles`
+Configure **Roles**.
 ![notes](../images/security/keycloak/nexus_client_03.png)
 
-#### SA for roles
-Assign roles to `nexus` user for view realms, users and clients.
+Assign roles to **nexus** user for view realms, users and clients.
 ![notes](../images/security/keycloak/nexus_client_sa_roles.png)
 
-### Keycloak - Groups
-Create `nx-admin` group with `Role Mappins`.
+#### Groups
+Create **nx-admin** group with **Role Mappins**.
 ![notes](../images/security/keycloak/nexus_groups.png)
 
-### Keycloak - Users
-Join user to a `nx-admin` group.
+#### Users
+Join user to a **nx-admin** group.
 ![notes](../images/security/keycloak/nexus_users.png)
 
 ### Nexus
+At this point we define the necessary configuration in Nexus to be able to perform the integration with Keycloak.
+
+#### Download adapter config
 Download Keycloak conection adaptor for client.
 ![notes](../images/security/keycloak/jenkins_client_adapter.png)
 
+#### Configuration
 The YAML file for the Helm Chart is:
 ```yaml
 image:
