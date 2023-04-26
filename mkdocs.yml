@@ -56,7 +56,6 @@ nav:
     - Kubernetes:
         - Certifications:
             - CKA: kubernetes/certifications/cka.md
-            - CKAD: kubernetes/certifications/ckad.md
             - CKS: kubernetes/certifications/cks.md
         - Helm: 
             - kubernetes/helm/helm.md
