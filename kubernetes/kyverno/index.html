@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Adrián Martín García" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Helmwave - MyNotes</title>
+    <title>Kyverno - MyNotes</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Helmwave";
-        var mkdocs_page_input_path = "kubernetes/helmwave.md";
+        var mkdocs_page_name = "Kyverno";
+        var mkdocs_page_input_path = "kubernetes/kyverno.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -181,29 +181,29 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Helmwave</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../helmwave/">Helmwave</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../kyverno/">Kyverno</a>
-    <ul>
-    <li class="toctree-l2"><a class="reference internal" href="../kyverno/#politicas-y-reglas">Políticas y Reglas</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Kyverno</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#politicas-y-reglas">Políticas y Reglas</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#settings">Settings</a>
+    <li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#resource-selector">Resource selector</a>
+    <li class="toctree-l3"><a class="reference internal" href="#resource-selector">Resource selector</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#validate-rules">Validate rules</a>
+    <li class="toctree-l3"><a class="reference internal" href="#validate-rules">Validate rules</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#mutate-rules">Mutate Rules</a>
+    <li class="toctree-l3"><a class="reference internal" href="#mutate-rules">Mutate Rules</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#generate-rules">Generate Rules</a>
+    <li class="toctree-l3"><a class="reference internal" href="#generate-rules">Generate Rules</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#verify-images">Verify Images</a>
+    <li class="toctree-l3"><a class="reference internal" href="#verify-images">Verify Images</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#cleanup">Cleanup</a>
+    <li class="toctree-l3"><a class="reference internal" href="#cleanup">Cleanup</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#testing-policies">Testing policies</a>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-policies">Testing policies</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="../kyverno/#reporting">Reporting</a>
+    <li class="toctree-l3"><a class="reference internal" href="#reporting">Reporting</a>
     </li>
         </ul>
     </li>
@@ -315,9 +315,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Kubernetes &raquo;</li>
-      <li>Helmwave</li>
+      <li>Kyverno</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/amartingarcia/notes/edit/master/docs/kubernetes/helmwave.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/amartingarcia/notes/edit/master/docs/kubernetes/kyverno.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -325,28 +325,296 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>Helmwave is helm3-native tool for deploy your Helm Charts. HelmWave is like docker-compose for helm.</p>
-<p>We focus on speed execution, tiny size, pretty debugging.</p>
-<p>With helmwave you will become a superhero:</p>
-<p>Deploy multiple environments by one step<br />
-Separate values for environments<br />
-Common values for apps<br />
-Keep a directory of chart value files<br />
-Maintain changes in version control<br />
-Template values<br />
-Step by Step deployment (depends_on, allow_failure)<br />
-Live tracking kubernetes resources with kubedog<br />
-Fetch data from external datasource like vault, aws sm<br />
-&hellip; and much more!</p>
-<ul>
-<li>https://github.com/helmwave/helmwave</li>
-</ul>
+                <h1 id="kyverno">Kyverno<a class="headerlink" href="#kyverno" title="Permanent link">&para;</a></h1>
+<p>Kyverno is an open source policy engine for Kubernetes, a popular container orchestration platform. It provides a way to apply custom policies and rules to manage and secure Kubernetes resources.</p>
+<p>With Kyverno, you can define policies as code using a declarative language. These policies are applied to Kubernetes resources at runtime, allowing you to enforce various configurations, security rules, and best practices.</p>
+<h2 id="politicas-y-reglas">Políticas y Reglas<a class="headerlink" href="#politicas-y-reglas" title="Permanent link">&para;</a></h2>
+<p>A policy is a collection of rules. Each rule consists of a <code>match</code> or <code>exclude</code> statement. And a <code>validate</code>, <code>mutate</code> or <code>generate</code> statement. It is also possible to specify <code>Verify Images</code> rules.</p>
+<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
+<p>Policies can contain one or more rules and you can specify some common settings:
+* <code>applyRules</code>: indicates how many rules to apply One|All.
+* <code>background</code>: controls the scanning of existing resources.
+* <code>failurePolicy</code>: API Server behaviour if the webhook does not respond.
+* <code>generateExisting</code>: controls whether to evaluate the policy at the time it is created.
+* mutateExistingOnPolicyUpdate<code>: evaluates rule when it is updated.
+*</code>schemaValidation<code>: policy validation check.
+*</code>validationFailureAction<code>: Enforce (blocking) or Audit (non-blocking).
+*</code>validationFailureActionOverrides<code>: override validationFailureAction
+* webhookTimeoutSeconds</code>: maximum time to apply the policy.</p>
+<h3 id="resource-selector">Resource selector<a class="headerlink" href="#resource-selector" title="Permanent link">&para;</a></h3>
+<p>The match and exclude filters control the resources to which the policy is applied.
+* any: as <strong>OR</strong>
+* all: as <strong>AND</strong></p>
+<p>Resource filters can be applied to:
+* resources: resources by name, namespaces, types, operations, tags, annotations, or selectors.
+* subjets: user, group, or service accounts.
+* roles
+* clusterRoles</p>
+<pre><code class="language-yaml">spec:
+  rules:
+  - name: no-LoadBalancer
+    match:
+      any:
+      - resources:
+          names: 
+          - &quot;prod-*&quot;
+          - &quot;staging&quot;
+          kinds:
+          - Service
+          operations:
+          - CREATE
+      - resources:
+          kinds:
+          - Service
+          operations:
+          - CREATE
+        subjects:
+        - kind: User
+          name: dave
+</code></pre>
+<h3 id="validate-rules">Validate rules<a class="headerlink" href="#validate-rules" title="Permanent link">&para;</a></h3>
+<p>For example, allowing to generate an alert for all Pods in the cluster that do not contain the <code>team</code> tag (with any value), and blocking the creation of Pods that do not have the <code>team</code> tag in the <code>req-labels</code> namespace.</p>
+<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-labels
+spec:
+  validationFailureAction: Audit
+  validationFailureActionOverrides:
+    - action: Enforce
+      namespaces:
+        - req-labels
+  rules:
+  - name: check-team
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    validate:
+      message: &quot;label 'team' is required&quot;
+      pattern:
+        metadata:
+          labels:
+            team: &quot;?*&quot;
+</code></pre>
+<p>The patterns you can use are:
+* &lsquo;<em>&lsquo;
+* &lsquo;?&rsquo;
+* &lsquo;?</em>&lsquo;
+* &lsquo;null&rsquo;</p>
+<h3 id="mutate-rules">Mutate Rules<a class="headerlink" href="#mutate-rules" title="Permanent link">&para;</a></h3>
+<p>For example, it allows to mutate all Pods in the <code>pull-policy</code> namespace that define an image <code>:latest</code> by setting an <code>imagePullPolicy</code> to <code>IfNotPresent</code>.</p>
+<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: set-image-pull-policy
+spec:
+  rules:
+    - name: set-image-pull-policy
+      match:
+        any:
+        - resources:
+            kinds:
+            - Pod
+            namespaces:
+            - pull-policy
+      mutate:
+        patchStrategicMerge:
+          spec:
+            containers:
+              # match images which end with :latest
+              - (image): &quot;*:latest&quot;
+                # set the imagePullPolicy to &quot;IfNotPresent&quot;
+                imagePullPolicy: &quot;IfNotPresent&quot;
+</code></pre>
+<p>Some mutations cannot be performed by patchStrategicMerge so you must use patchesJson6902.</p>
+<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-tolerations
+spec:
+  rules:
+  - name: service-toleration
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+          namespaces:
+          - tolerations
+    preconditions:
+      any:
+      - key: &quot;app&quot;
+        operator: AnyNotIn
+        value: &quot;{{ request.object.spec.tolerations[].key || `[]` }}&quot;
+    mutate:
+      patchesJson6902: |-
+        - op: add
+          path: &quot;/spec/tolerations/-&quot;
+          value:
+            key: app
+            operator: Equal
+            value: common
+            effect: NoSchedule
+</code></pre>
+<h3 id="generate-rules">Generate Rules<a class="headerlink" href="#generate-rules" title="Permanent link">&para;</a></h3>
+<p>It is possible to create Kubernetes objects as a ConfigMap with some data in all namespaces except the excluded list.</p>
+<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: zk-kafka-address
+spec:
+  generateExisting: true
+  rules:
+  - name: k-kafka-address
+    match:
+      any:
+      - resources:
+          kinds:
+          - Namespace
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - kube-system
+          - default
+          - kube-public
+          - kyverno
+    generate:
+      synchronize: true
+      apiVersion: v1
+      kind: ConfigMap
+      name: zk-kafka-address
+      # generate the resource in the new namespace
+      namespace: &quot;{{request.object.metadata.name}}&quot;
+      data:
+        kind: ConfigMap
+        metadata:
+          labels:
+            somekey: somevalue
+        data:
+          ZK_ADDRESS: &quot;192.168.10.10:2181,192.168.10.11:2181,192.168.10.12:2181&quot;
+          KAFKA_ADDRESS: &quot;192.168.10.13:9092,192.168.10.14:9092,192.168.10.15:9092&quot;
+</code></pre>
+<h3 id="verify-images">Verify Images<a class="headerlink" href="#verify-images" title="Permanent link">&para;</a></h3>
+<p>It is possible to verify images with Notary and Sigstore.</p>
+<pre><code class="language-yaml">#Notary
+apiVersion: kyverno.io/v2beta1
+kind: ClusterPolicy
+metadata:
+  name: check-image-notary
+spec:
+  validationFailureAction: Enforce
+  webhookTimeoutSeconds: 30
+  failurePolicy: Fail  
+  rules:
+    - name: verify-signature-notary
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      verifyImages:
+      - type: Notary
+        imageReferences:
+        - &quot;ghcr.io/kyverno/test-verify-image*&quot;
+        attestors:
+        - count: 1
+          entries:
+          - certificates:
+              cert: |-
+                -----BEGIN CERTIFICATE-----
+                MIIDTTCCAjWgAwIBAgIJAPI+zAzn4s0xMA0GCSqGSIb3DQEBCwUAMEwxCzAJBgNV
+                BAYTAlVTMQswCQYDVQQIDAJXQTEQMA4GA1UEBwwHU2VhdHRsZTEPMA0GA1UECgwG
+                Tm90YXJ5MQ0wCwYDVQQDDAR0ZXN0MB4XDTIzMDUyMjIxMTUxOFoXDTMzMDUxOTIx
+                MTUxOFowTDELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAldBMRAwDgYDVQQHDAdTZWF0
+                dGxlMQ8wDQYDVQQKDAZOb3RhcnkxDTALBgNVBAMMBHRlc3QwggEiMA0GCSqGSIb3
+                DQEBAQUAA4IBDwAwggEKAoIBAQDNhTwv+QMk7jEHufFfIFlBjn2NiJaYPgL4eBS+
+                b+o37ve5Zn9nzRppV6kGsa161r9s2KkLXmJrojNy6vo9a6g6RtZ3F6xKiWLUmbAL
+                hVTCfYw/2n7xNlVMjyyUpE+7e193PF8HfQrfDFxe2JnX5LHtGe+X9vdvo2l41R6m
+                Iia04DvpMdG4+da2tKPzXIuLUz/FDb6IODO3+qsqQLwEKmmUee+KX+3yw8I6G1y0
+                Vp0mnHfsfutlHeG8gazCDlzEsuD4QJ9BKeRf2Vrb0ywqNLkGCbcCWF2H5Q80Iq/f
+                ETVO9z88R7WheVdEjUB8UrY7ZMLdADM14IPhY2Y+tLaSzEVZAgMBAAGjMjAwMAkG
+                A1UdEwQCMAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMDMA0G
+                CSqGSIb3DQEBCwUAA4IBAQBX7x4Ucre8AIUmXZ5PUK/zUBVOrZZzR1YE8w86J4X9
+                kYeTtlijf9i2LTZMfGuG0dEVFN4ae3CCpBst+ilhIndnoxTyzP+sNy4RCRQ2Y/k8
+                Zq235KIh7uucq96PL0qsF9s2RpTKXxyOGdtp9+HO0Ty5txJE2txtLDUIVPK5WNDF
+                ByCEQNhtHgN6V20b8KU2oLBZ9vyB8V010dQz0NRTDLhkcvJig00535/LUylECYAJ
+                5/jn6XKt6UYCQJbVNzBg/YPGc1RF4xdsGVDBben/JXpeGEmkdmXPILTKd9tZ5TC0
+                uOKpF5rWAruB5PCIrquamOejpXV9aQA/K2JQDuc0mcKz
+                -----END CERTIFICATE-----    
+
+# Signature Cosign
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-image
+spec:
+  validationFailureAction: Enforce
+  background: false
+  webhookTimeoutSeconds: 30
+  failurePolicy: Fail
+  rules:
+    - name: check-image
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      verifyImages:
+      - imageReferences:
+        - &quot;ghcr.io/kyverno/test-verify-image*&quot;
+        attestors:
+        - count: 1
+          entries:
+          - keys:
+              publicKeys: |-
+                -----BEGIN PUBLIC KEY-----
+                MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8nXRh950IZbRj8Ra/N9sbqOPZrfM
+                5/KAQN0/KjHcorm/J5yctVd7iEcnessRQjU917hmKO6JWVGHpDguIyakZA==
+                -----END PUBLIC KEY-----     
+</code></pre>
+<h3 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h3>
+<p>It is also possible to delete objects</p>
+<pre><code class="language-yaml">apiVersion: kyverno.io/v2alpha1
+kind: ClusterCleanupPolicy
+metadata:
+  name: cleandeploy
+spec:
+  match:
+    any:
+    - resources:
+        kinds:
+          - Deployment
+        selector:
+          matchLabels:
+            canremove: &quot;true&quot;
+  conditions:
+    any:
+    - key: &quot;{{ target.spec.replicas }}&quot;
+      operator: LessThan
+      value: 2
+  schedule: &quot;*/5 * * * *&quot;
+</code></pre>
+<h3 id="testing-policies">Testing policies<a class="headerlink" href="#testing-policies" title="Permanent link">&para;</a></h3>
+<p>It is possible to test policies in pipelines, before applying the resources to be created.</p>
+<h3 id="reporting">Reporting<a class="headerlink" href="#reporting" title="Permanent link">&para;</a></h3>
+<p>Kyverno provides reports on all policies.</p>
+<pre><code class="language-sh">$ kubectl get polr -A
+NAMESPACE     NAME                                  PASS   FAIL   WARN   ERROR   SKIP   AGE
+kube-system   cpol-disallow-privileged-containers   14     0      0      0       0      6s
+kyverno       cpol-disallow-privileged-containers   2      0      0      0       0      5s
+default       cpol-disallow-privileged-containers   0      1      0      0       0      5s
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../helm/sops/" class="btn btn-neutral float-left" title="SOPS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../kyverno/" class="btn btn-neutral float-right" title="Kyverno">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../helmwave/" class="btn btn-neutral float-left" title="Helmwave"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../kops/" class="btn btn-neutral float-right" title="kOps">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -373,10 +641,10 @@ Fetch data from external datasource like vault, aws sm<br />
         </span>
     
     
-      <span><a href="../helm/sops/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../helmwave/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../kyverno/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../kops/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
