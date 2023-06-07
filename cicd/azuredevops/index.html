@@ -59,6 +59,34 @@
               <p class="caption"><span class="caption-text">CI/CD</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Azure Devops</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#organization">Organization</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#groups">Groups</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#permissions-groups">Permissions Groups</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#project-collection-administrators">Project Collection Administrators</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#project-administrators">Project Administrators</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#readers">Readers</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#group1-administrators">Group1 Administrators</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#group2-administrators">Group2 Administrators</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-groups">Azure Groups</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#azure-repos">Azure Repos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#azure-pipelines">Azure Pipelines</a>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../bitbucket/">Bitbucket</a>
                   </li>
@@ -335,11 +363,63 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <hr />
-<p>title: CICD - Azure Devops<br />
-date: 20230607<br />
-author: Adrián Martín García</p>
-<hr />
+                <h1 id="azure-devops">Azure Devops<a class="headerlink" href="#azure-devops" title="Permanent link">&para;</a></h1>
+<h2 id="organization">Organization<a class="headerlink" href="#organization" title="Permanent link">&para;</a></h2>
+<p>This section defines everything related to Azure Devops groups:</p>
+<p>Defining groups of groups.</p>
+<p>Defining permissions for groups.</p>
+<p>Link between Azure Groups and Azure Devops Groups.</p>
+<p>How to assign members to a group.</p>
+<p>To get an overview of Azure Devops groups, it is recommended to read the official <a href="https://learn.microsoft.com/en-us/azure/devops/organizations/security/about-permissions?view=azure-devops&amp;tabs=preview-page">documentation</a>. This document will provide us with the necessary knowledge to know how to develop all the resources defined on this page:</p>
+<ul>
+<li>Groups.</li>
+<li>Members.</li>
+<li>Permissions.</li>
+</ul>
+<p><img alt="notes" src="../../images/cicd/azureDevops.png" /></p>
+<h3 id="groups">Groups<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h3>
+<p>During the creation of the organisation and the project, a list of groups and associated permissions are created by default (it also adds a TEAM with the name of the project).</p>
+<p>If possible and appropriate, we will use already defined groups. Before continuing, it is necessary to point out that currently two groups can be distinguished in the project: Group1 and Group2. The groups we will use are as follows:</p>
+<ul>
+<li><em>[Organization level]</em> Project Collection Administrators. (Created by default).</li>
+<li><em>[Project Level]</em> Project Administrators. (Created by default).</li>
+<li><em>[Project Level]</em> Readers. (Created by default).</li>
+<li><em>[Project Level]</em> Group1 Administrators. (Created on demand).</li>
+<li><em>[Project Level]</em> Group2 Administrators. (Created on demand).</li>
+</ul>
+<h3 id="permissions-groups">Permissions Groups<a class="headerlink" href="#permissions-groups" title="Permanent link">&para;</a></h3>
+<p>Each group will have specific permissions over different areas of Azure Devops. The areas currently used are: repositories and pipelines.</p>
+<h4 id="project-collection-administrators">Project Collection Administrators<a class="headerlink" href="#project-collection-administrators" title="Permanent link">&para;</a></h4>
+<p>Members in this group are administrators of the entire organisation. They can perform any action over the entire organisation.</p>
+<h4 id="project-administrators">Project Administrators<a class="headerlink" href="#project-administrators" title="Permanent link">&para;</a></h4>
+<p>Members in this group are project administrators and read-only users at the organisation level (it is not possible to limit read permissions). They can perform actions such as:</p>
+<ul>
+<li>Set project configuration.</li>
+<li>All actions on the Repositories section.</li>
+<li>All actions on the Pipelines section.</li>
+</ul>
+<h4 id="readers">Readers<a class="headerlink" href="#readers" title="Permanent link">&para;</a></h4>
+<p>Members in this group are read-only users at the organisation-wide level, even if this group is defined at project level.</p>
+<h4 id="group1-administrators">Group1 Administrators<a class="headerlink" href="#group1-administrators" title="Permanent link">&para;</a></h4>
+<p>Members in this group are administrator users of Group1 resources only. This includes:
+* Repositories for use in Group1.
+* Group1 directory in Azure Pipelines.</p>
+<h4 id="group2-administrators">Group2 Administrators<a class="headerlink" href="#group2-administrators" title="Permanent link">&para;</a></h4>
+<p>Members in this group are administrator users of Group2 resources only. This includes:
+* Repositories for use in Group2.
+* Group2 directory in Azure Pipelines.</p>
+<p><em>The Azure Pipelines folder structure will be visible to all members of the organisation, it is a behaviour that is not possible to change in Azure Devops.</em></p>
+<h3 id="azure-groups">Azure Groups<a class="headerlink" href="#azure-groups" title="Permanent link">&para;</a></h3>
+<p>Azure Devops has integration with Azure Groups, and therefore we delegate the assignment of users to groups to this service. To establish a relationship between groups of different services is established by adding an Azure Groups group as a member of Azure Devops Groups. The groups defined in Azure Groups and the relationship they have with Azure Devops groups is as follows:</p>
+<ul>
+<li>Group-AzDevops-Org-Admin is a member of Project Collection Administrators.</li>
+<li>Group-AzDevops-Prj-Admin is a member of Project Administrators.</li>
+<li>Group-AzDevops-Prj-Reader is a member of Readers.</li>
+<li>Group-AzDevops-Group1-Admin is a member of Group1 Administrators.</li>
+<li>Group-AzDevops-Group2-Admin is a member of Group2 Administrators.</li>
+</ul>
+<h2 id="azure-repos">Azure Repos<a class="headerlink" href="#azure-repos" title="Permanent link">&para;</a></h2>
+<h2 id="azure-pipelines">Azure Pipelines<a class="headerlink" href="#azure-pipelines" title="Permanent link">&para;</a></h2>
               
             </div>
           </div><footer>
