@@ -63,6 +63,7 @@ nav:
             - Helmfile: kubernetes/helm/helmfile.md
             - SOPS: kubernetes/helm/sops.md
         - Helmwave: kubernetes/helmwave.md
+        - Kyverno: kubernetes/kyverno.md
         - kOps: kubernetes/kops.md
 #    - Linux:
 #    - Monitoring:
