@@ -54,11 +54,3 @@ Helm uses a packaging format called Charts. A Helm Chart is a collection of file
     │       └── test-connection.yaml
     └── values.yaml
 ```
-
-Helm can be supplemented with some features:
-* [Helm-diff](helm_diff.md)
-* [Helm-git](helm_git.md)
-* [Helm-secrets](helm_secrets.md)
-* [SOPS](sops.md)
-* [VALS](vals.md)
-* [Helmfile](helmfile.md)

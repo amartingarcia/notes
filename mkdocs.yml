@@ -7,90 +7,56 @@ repo_url: https://github.com/amartingarcia/notes
 
 nav:
     - Home: index.md
-## TO DO
-#    - BBDD:
-#        - Relational:
-#        - NoSQL:
+    - BBDD:
+        - Relational: bbdd/relational.md
+        - NoSQL: bbdd/nosql.md
     - CI/CD:
-#        - Azure Pipelines:
-#        - Bitbucket:
-#        - Github Actions:
-#        - GitlabCI:
-        - Jenkins:
-            - cicd/jenkins/jenkins.md
-            - Jenkinsfile: 
-                - cicd/jenkins/jenkinsfile.md
-                - Example 1: cicd/jenkins/jenkinsfiles/jenkinsfile_1.md
-                - Example 2: cicd/jenkins/jenkinsfiles/jenkinsfile_2.md
-                - Example 3: cicd/jenkins/jenkinsfiles/jenkinsfile_3.md
-                - Example 4: cicd/jenkins/jenkinsfiles/jenkinsfile_4.md
-                - Example 5: cicd/jenkins/jenkinsfiles/jenkinsfile_5.md
-#    - Code:
-#        - Go:
-#        - Python:
-#        - Shell Script:
-#    - Configuration Management:
-#        - Ansible:
-#        - Ansible Tower:
-#        - Ansible AWX:
-#        - Chef:
-#        - Puppet:
-#        - Salt:
-#        - Foreman:
-#    - Containers:
-#        - Docker:
-#        - Dockerfiles:
-#        - Registries:
+        - Azure Devops: cicd/azuredevops.md
+        - Bitbucket: cicd/bitbucket.md
+        - Github Actions: cicd/github.md
+        - GitlabCI: cicd/gitlabci.md
+        - Jenkins: cicd/jenkins.md
+    - Code:
+        - Go: code/go.md
+        - Python: code/python.md
+        - Shell Script: code/shell.md
+    - Configuration Management:
+        - Ansible: configurationmanagement/ansible.md
+    - Containers:
+        - Docker: containers/docker.md
+        - Dockerfiles: containers/dockerfiles.md
+        - Registries: containers/registries.md
     - Git:
         - Multi-accounts: git/multi_accounts.md
-#    - Gitops:
-#    - Infrastructure as Code:
-#        - ARM:
-#        - Cloudformation:
-#        - Deployment Manager:
-#        - Terraform:
-#            - tflint:
-#            - tfdocs:
-#            - Terragrunt:
-#    - Kafka:
+    - Gitops:
+        - ArgoCD: gitops/argocd.md
+    - Infrastructure as Code:
+        - Cloudformation: iac/cloudformation.md
+        - Terraform: iac/terraform.md
     - Kubernetes:
-        - Certifications:
-            - CKA: kubernetes/certifications/cka.md
-            - CKS: kubernetes/certifications/cks.md
-        - Helm: 
-            - kubernetes/helm/helm.md
-            - helm-docs: kubernetes/helm/helm-docs.md
-            - Helmfile: kubernetes/helm/helmfile.md
-            - SOPS: kubernetes/helm/sops.md
+        - CKA: kubernetes/certifications/cka.md
+        - CKS: kubernetes/certifications/cks.md
+        - Helm: kubernetes/helm/helm.md
+        - helm-docs: kubernetes/helm/helm-docs.md
+        - Helmfile: kubernetes/helm/helmfile.md
         - Helmwave: kubernetes/helmwave.md
         - Kyverno: kubernetes/kyverno.md
         - kOps: kubernetes/kops.md
-#    - Linux:
-#    - Monitoring:
-#        - Prometheus:
-#            - Node Exporter:
-#        - Loki:
-#        - Promtail:
-#        - Cloudwatch:
-#    - Openshift:
-#    - Public Cloud:
-#        - Amazon Web Services:
-#        - Google Cloud Platform:
-#            - Training:
-#                - GCP Cloud Engineer Associate: 
-#        - Microsoft Azure:
-#    - Private Cloud:
-#        - Openstack:
+        - SOPS: kubernetes/helm/sops.md
+    - Linux: linux/linux.md
+    - Monitoring:
+        - Prometheus: monitoring/prometheus.md
+        - Loki: monitoring/loki.md
+        - Promtail: monitoring/promtail.md
     - QA:
         - Semantic Release: qa/semantic_release.md
-        - Nexus: qa/nexus.md
-        - Sonarqube: qa/sonarqube.md
+    - Queue: 
+        - Kafka: queue/kafka.md
     - Security:
-        - Keycloak: 
-            - security/keycloak.md
-            - Jenkins: security/keycloak_jenkins.md
-            - Nexus: security/keycloak_nexus.md
-            - Sonarqube: security/keycloak_sonarqube.md
+        - Keycloak: security/keycloak.md
+        - Jenkins: security/keycloak_jenkins.md
+        - Nexus: security/keycloak_nexus.md
+        - Sonarqube: security/keycloak_sonarqube.md
 
 theme:
   name: readthedocs
