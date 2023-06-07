@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Adrián Martín García" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Jenkins - MyNotes</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Jenkins";
+        var mkdocs_page_input_path = "cicd/jenkins.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/dockerfile.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/groovy.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MyNotes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+    <ul>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">BBDD</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../bbdd/relational/">Relational</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../bbdd/nosql/">NoSQL</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CI/CD</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../azuredevops/">Azure Devops</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../bitbucket/">Bitbucket</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../github/">Github Actions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gitlabci/">GitlabCI</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Jenkins</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Code</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../code/go/">Go</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../code/python/">Python</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../code/shell/">Shell Script</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Configuration Management</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../configurationmanagement/ansible/">Ansible</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Containers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../containers/docker/">Docker</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../containers/dockerfiles/">Dockerfiles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../containers/registries/">Registries</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Git</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../git/multi_accounts/">Multi-accounts</a>
+    <ul>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Gitops</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../gitops/argocd/">ArgoCD</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Infrastructure as Code</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../iac/cloudformation/">Cloudformation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../iac/terraform/">Terraform</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Kubernetes</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/certifications/cka/">CKA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/certifications/cks/">CKS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/helm/helm/">Helm</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/helm/helm/#helm-charts">Helm Charts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helm/#directory-hierarchy">Directory hierarchy</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/helm/helm-docs/">helm-docs</a>
+    <ul>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/helm/helmfile/">Helmfile</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/helm/helmfile/#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/helm/helmfile/#hierarchy">Hierarchy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/helm/helmfile/#example-files">Example files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#basesenvironmentsyaml">bases/environments.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#baseshelmdefaultsyaml">bases/helmDefaults.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#templatessopsyaml">templates/.sops.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#templatesdefault_valuesyaml">templates/default_values.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#helmfileyaml">helmfile.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#releasesmetrics-serverhelmfileyaml">releases/metrics-server/helmfile.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#releasesmetrics-serverdefaultsyaml">releases/metrics-server/defaults.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#releasesmetrics-serverenvsdevvaluesyaml">releases/metrics-server/envs/dev/values.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#releasesmetrics-serverenvsdevvaluesyamlgtmpl">releases/metrics-server/envs/dev/values.yaml.gtmpl</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/helm/helmfile/#hemfile-commands">Hemfile Commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#rendering-dev-environment">Rendering dev environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#rendering-dev-environment-for-metrics-server">Rendering dev environment for metrics-server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#diff-shows-differences-between-the-code-and-the-cluster">Diff. Shows differences between the code and the cluster</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../kubernetes/helm/helmfile/#linters">Linters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#sync-install-metrics-server-release">Sync (Install) metrics-server release</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/helmfile/#delete-metrics-server-release">Delete metrics-server release</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/helmwave/">Helmwave</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/kyverno/">Kyverno</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/kyverno/#politicas-y-reglas">Políticas y Reglas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#settings">Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#resource-selector">Resource selector</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#validate-rules">Validate rules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#mutate-rules">Mutate Rules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#generate-rules">Generate Rules</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#verify-images">Verify Images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#cleanup">Cleanup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#testing-policies">Testing policies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/kyverno/#reporting">Reporting</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/kops/">kOps</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/kops/#example-file">Example file</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../kubernetes/helm/sops/">SOPS</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../kubernetes/helm/sops/#sops-commands">SOPS Commands</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/sops/#show-file">Show file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/sops/#encrypt-file">Encrypt file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../kubernetes/helm/sops/#decrypt-file">Decrypt file</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../linux/linux/">Linux</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Monitoring</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/prometheus/">Prometheus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/loki/">Loki</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/promtail/">Promtail</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QA</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qa/semantic_release/">Semantic Release</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../qa/semantic_release/#how-semantic-selease-works">How Semantic Selease works</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Queue</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../queue/kafka/">Kafka</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Security</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../security/keycloak/">Keycloak</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../../security/keycloak/#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../security/keycloak/#login">Login</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../security/keycloak/#configure-microsoft-azure-as-identity-provider">Configure Microsoft Azure as Identity Provider</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../security/keycloak/#app-registration">App Registration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../security/keycloak/#keycloak-indentity-provider">Keycloak Indentity Provider</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../../security/keycloak/#integrations">Integrations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../../security/keycloak/#jenkins">Jenkins</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#configuration">Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#login_1">Login</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../security/keycloak/#nexus">Nexus</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#requirements_1">Requirements</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#configuration_2">Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#login_2">Login</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../../security/keycloak/#sonarqube">Sonarqube</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#requirements_2">Requirements</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#configuration_4">Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="../../security/keycloak/#login_3">Login</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../security/keycloak_jenkins.md">Jenkins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../security/keycloak_nexus.md">Nexus</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="../../security/keycloak_sonarqube.md">Sonarqube</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MyNotes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>CI/CD &raquo;</li>
+      <li>Jenkins</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/amartingarcia/notes/edit/master/docs/cicd/jenkins.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">&para;</a></h1>
+<p>[TBD]</p>
+<h1 id="jenkinsfiles">Jenkinsfiles<a class="headerlink" href="#jenkinsfiles" title="Permanent link">&para;</a></h1>
+<p>On this section declare some Jenkinsfile documentated.</p>
+<h1 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h1>
+<pre><code class="language-groovy">// Available environments in which it can be deployed
+ENVIRONMENTS = [
+  &quot;DEV&quot;: [
+    &quot;KUBERNETES&quot;: &quot;&lt;kubernetes-agent&gt;&quot;,
+    &quot;POD&quot;:        &quot;pod.yaml&quot;,
+    &quot;LABEL&quot;:      &quot;label&quot;
+  ],
+  &quot;PRO&quot;: [
+    &quot;KUBERNETES&quot;: &quot;&lt;kubernetes-agent&gt;&quot;,
+    &quot;POD&quot;:        &quot;pod.yaml&quot;,
+    &quot;LABEL&quot;:      &quot;label&quot;
+  ],
+]
+
+pipeline {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start pipeline                                                                //
+/////////////////////////////////////////////////////////////////////////////////////
+
+options {
+  // It allows to keep the pipeline, for 8 hours.
+  timeout(time: 8, unit: 'HOURS')
+  disableConcurrentBuilds()
+}
+
+parameters {
+  // Gets a list of available environments to deploy, and offers them as input parameters
+  choice(name: 'environment', choices: ENVIRONMENTS.keySet() as List, description: 'Environment where deploy' )
+}
+
+triggers { 
+  // UTC - will take place between 23:01 and 23:09 UTC+2 (&quot;H&quot; allows you to choose from a range of time) 
+  cron( env.BRANCH_NAME.equals('main')  ? 'H(1-29) 21 * * *' : '')
+}
+
+// By default everything runs in the cluster. Except the execution of the scripts.
+agent {
+  kubernetes {
+    cloud &quot;&lt;kubernetes-agent&gt;&quot;
+    label &quot;label-${env.BRANCH_NAME}-${env.BUILD_NUMBER}&quot;
+    yamlFile &quot;pod.yaml&quot;
+    defaultContainer &quot;alpine&quot;
+  }
+}
+
+stages {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start stages                                                                  //
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Stage that allows the creation of tags through semantic-release
+stage('Semantic Release') {
+  when {
+    // It will only be executed when it is built in any of the defined branches
+    anyOf{
+      branch &quot;main&quot;
+      branch &quot;dev&quot;
+    }
+    beforeAgent true
+  }
+  steps {
+    container('node'){
+      withCredentials([
+      sshUserPrivateKey(credentialsId: 'credential-id', keyFileVariable: 'credential-key-file')]) {
+        sh &quot;&quot;&quot;
+          export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${credential-key-file}'
+          apk add nodejs npm git openssh bash coreutils
+          npm install -g semantic-release semantic-release/git -D
+          semantic-release --debug --plugins &quot;@semantic-release/git&quot;
+        &quot;&quot;&quot;
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+// Stage that allows to obtain the last tag created in the repository, and to build it
+stage('Calling tag job: PRO') {
+  when {
+    allOf{
+      branch &quot;main&quot;
+      triggeredBy 'TimerTrigger'
+    }
+    beforeAgent true
+  }
+  steps {
+    container('alpine'){
+      // Get the last tag created for main branch. Example, main: v1.1.1.
+    script{
+      sh 'apk add coreutils git'
+      MAIN_GIT_LATEST_TAG = sh (
+        script: &quot;git tag | sort --version-sort | grep -vi 'dev' | tail -1&quot;,
+        returnStdout: true
+      ).trim()
+        print(&quot;debug(MAIN_GIT_LATEST_TAG): &quot; + MAIN_GIT_LATEST_TAG)
+    }
+    // It will run the job, with the last tag created for the main branch.
+    build job: &quot;devops/job/${MAIN_GIT_LATEST_TAG}&quot;, wait: false,
+      parameters: [
+        string(name: 'environment',    value: 'PRO'  )
+      ]
+    }
+  } // `step` closing
+} // `stage` closing
+
+// Stage that allows to install all the necessary packages to execute the script
+stage('Preparing workspace') {
+  when {
+    allOf{
+      tag pattern: &quot;^v\\d+.\\d+.\\d+(-[0-9a-zA-Z\\.]+)?\$&quot;, comparator: &quot;REGEXP&quot;
+    }
+  }
+  steps {
+    container('python'){
+      // Prepare apk cache
+    sh '''
+      mkdir $WORKSPACE/apt-cache
+      ln -sf /var/cache/apt $WORKSPACE/apt-cache
+      apt update
+    '''
+    // Download Python dependencies while builinding virtualenv
+    sh '''
+      apt install -y virtualenv
+    '''
+    // Prepare virtualenv
+    sh '''
+      mkdir $WORKSPACE/virtualenv
+      virtualenv -p python3 virtualenv/.venv
+      $WORKSPACE/virtualenv/.venv/bin/pip3 install wheel
+      $WORKSPACE/virtualenv/.venv/bin/pip3 install -r $WORKSPACE/requirements.txt
+    '''
+    // Stash created environment
+    stash includes: 'apt-cache/**',  name: 'apt-cache'
+    stash includes: 'virtualenv/**', name: 'virtualenv'
+    }
+  } // `step` closing
+} // `stage` closing
+
+// Stage that allows to execute the script
+stage('Deploy environment') {
+  agent {
+    // Will obtain the data of the selected environment during the construction of the tag in Jenkins
+    kubernetes {
+      cloud ENVIRONMENTS[params.environment][&quot;KUBERNETES&quot;]
+      label ENVIRONMENTS[params.environment][&quot;LABEL&quot;]
+      yamlFile ENVIRONMENTS[params.environment][&quot;POD&quot;]
+    }
+  }
+  when {
+    allOf{
+      // will only run if the regex matches
+      tag pattern: &quot;^v\\d+.\\d+.\\d+(-[0-9a-zA-Z\\.]+)?\$&quot;, comparator: &quot;REGEXP&quot;
+    }
+    beforeAgent true
+  }
+  steps {
+    container('python'){
+      // Unstash files from cluster
+      unstash 'apt-cache'
+      unstash 'virtualenv'
+      retry(3){
+        sh 'ln -sf $WORKSPACE/apt-cache/apt /var/cache/apt'
+        sh 'apt update &amp;&amp; apt install -y virtualenv'
+        // Data source with the variables necessary for the execution of the script
+        sh '''#!/bin/bash
+          echo &quot;Exec script&quot;
+        '''
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+} // `all stages` closing 
+
+post {
+  // If the execution of the pipeline failed or aborted, an email will be sent to the recipients.
+  failure {
+    mail body: &quot;&lt;b&gt;Jenkins&lt;/b&gt;&lt;br&gt;Project: ${env.JOB_NAME} &lt;br&gt;Build Number: ${env.BUILD_NUMBER} &lt;br&gt; URL build: ${env.BUILD_URL}&quot;,
+    subject: &quot;Jenkins Build Failed: Project name -&gt; ${env.JOB_NAME}&quot;,
+    mimeType: 'text/html',
+    to: &quot;&quot;
+  }
+  aborted {
+    mail body: &quot;&lt;b&gt;Jenkins&lt;/b&gt;&lt;br&gt;Project: ${env.JOB_NAME} &lt;br&gt;Build Number: ${env.BUILD_NUMBER} &lt;br&gt; URL build: ${env.BUILD_URL}&quot;,
+    subject: &quot;Jenkins Build Aborted: Project name -&gt; ${env.JOB_NAME}&quot;,
+    mimeType: 'text/html',
+    to: &quot;&quot;
+  }
+} // `post actions` closing
+
+} // `pipeline` closing
+</code></pre>
+<h1 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h1>
+<pre><code class="language-groovy">// Name of the repository and its download link
+def map1 = [
+  &quot;repo1_map1&quot;      : &quot;&lt;git-url&gt;&quot;,
+  &quot;repo2_map1&quot;      : &quot;&lt;git-url&gt;&quot;
+]
+
+def map2 = [
+  &quot;repo1_map2&quot;      : &quot;&lt;git-url&gt;&quot;,
+  &quot;repo2_map2&quot;      : &quot;&lt;git-url&gt;&quot;,
+  &quot;repo3_map2&quot;      : &quot;&lt;git-url&gt;&quot;
+]
+
+def map3 = [
+  &quot;repo1_map3&quot;      : &quot;&lt;git-url&gt;&quot;,
+  &quot;repo2_map3&quot;      : &quot;&lt;git-url&gt;&quot;,
+  &quot;repo3_map3&quot;      : &quot;&lt;git-url&gt;&quot;
+]
+
+// Environment where we want to deploy
+ENVIRONMENTS = [
+  &quot;DEV&quot;: [
+    &quot;KUBERNETES&quot;: &quot;kubernetes-agent-dev&quot;,
+  ],
+  &quot;PRE&quot;: [
+    &quot;KUBERNETES&quot;: &quot;kubernetes-agent-pre&quot;,
+  ],
+  &quot;PRO&quot;: [
+    &quot;KUBERNETES&quot;: &quot;kubernetes-agent-pro&quot;,
+  ]
+]
+
+pipeline {
+
+parameters {
+  choice(name: 'environment', choices: ENVIRONMENTS.keySet() as List, description: 'List of all available environments')
+}
+
+agent {
+  kubernetes {
+    cloud     &quot;kubernetes&quot;
+    label     &quot;app-all-${env.BRANCH_NAME}-${env.BUILD_NUMBER}&quot;
+    yamlFile  &quot;pod.yaml&quot;
+    defaultContainer &quot;alpine&quot;
+  }
+}
+
+stages {
+
+stage('Preparing workspace') {
+  steps {
+    sh '''
+      apk update
+      apk add coreutils git openssh-client bash
+    '''
+  } // `step` closing
+} // `stage` closing
+
+
+stage (' Deploy phase 1') {
+  steps {
+    script {
+      // Dynamic Stages are generated, as many compo repositories have been declared
+      map1.each { entry -&gt;
+        stage (entry.key) {
+          withCredentials([
+          sshUserPrivateKey( credentialsId: 'credential-id', keyFileVariable: 'key') ]) {
+            sh &quot;&quot;&quot;
+              mkdir -p $WORKSPACE/$entry.key
+              export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${key}'
+              git clone $entry.value $WORKSPACE/$entry.key
+            &quot;&quot;&quot;
+          }
+          // The last tag of each repository is obtained to launch its construction
+          script{
+            GIT_LATEST_TAG = sh (
+              script: &quot;cd $WORKSPACE/$entry.key &amp;&amp; git tag | sort --version-sort | grep -i v | tail -1&quot;,
+            returnStdout: true
+            ).trim()
+              print(&quot;debug(GIT_LATEST_TAG): &quot; + GIT_LATEST_TAG)
+          }
+          // The job is built with the last tag found and the one with the indicated input parameter.
+          build job: &quot;Devops/job/$entry.key/${GIT_LATEST_TAG}&quot;,
+            parameters: [
+              string(name: 'environment',    value: params.environment  )
+            ]
+        }
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+stage (' Deploy phase 2') {
+  steps {
+    script {
+      // Dynamic Stages are generated, as many compo repositories have been declared
+      map2.each { entry -&gt;
+        stage (entry.key) {
+          withCredentials([
+          sshUserPrivateKey( credentialsId: 'credential-id', keyFileVariable: 'key') ]) {
+            sh &quot;&quot;&quot;
+              mkdir -p $WORKSPACE/$entry.key
+              export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${key}'
+              git clone $entry.value $WORKSPACE/$entry.key
+            &quot;&quot;&quot;
+          }
+          // The last tag of each repository is obtained to launch its construction
+          script{
+            GIT_LATEST_TAG = sh (
+              script: &quot;cd $WORKSPACE/$entry.key &amp;&amp; git tag | sort --version-sort | grep -i v | tail -1&quot;,
+            returnStdout: true
+            ).trim()
+              print(&quot;debug(GIT_LATEST_TAG): &quot; + GIT_LATEST_TAG)
+          }
+          // The job is built with the last tag found and the one with the indicated input parameter.
+          build job: &quot;Devops/job/$entry.key/${GIT_LATEST_TAG}&quot;,
+            parameters: [
+              string(name: 'environment',    value: params.environment  )
+            ]
+        }
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+stage (' Deploy phase 3') {
+  steps {
+    script {
+      // Dynamic Stages are generated, as many compo repositories have been declared
+      map3.each { entry -&gt;
+        stage (entry.key) {
+          withCredentials([
+          sshUserPrivateKey( credentialsId: 'credential-id', keyFileVariable: 'key') ]) {
+            sh &quot;&quot;&quot;
+              mkdir -p $WORKSPACE/$entry.key
+              export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${key}'
+              git clone $entry.value $WORKSPACE/$entry.key
+            &quot;&quot;&quot;
+          }
+          // The last tag of each repository is obtained to launch its construction
+          script{
+            GIT_LATEST_TAG = sh (
+              script: &quot;cd $WORKSPACE/$entry.key &amp;&amp; git tag | sort --version-sort | grep -i v | tail -1&quot;,
+            returnStdout: true
+            ).trim()
+              print(&quot;debug(GIT_LATEST_TAG): &quot; + GIT_LATEST_TAG)
+          }
+          // The job is built with the last tag found and the one with the indicated input parameter.
+          build job: &quot;Devops/job/$entry.key/${GIT_LATEST_TAG}&quot;,
+            parameters: [
+              string(name: 'environment',    value: params.environment  )
+            ]
+        }
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+} // all stages
+
+} // pipeline
+</code></pre>
+<h1 id="example-3">Example 3<a class="headerlink" href="#example-3" title="Permanent link">&para;</a></h1>
+<pre><code class="language-groovy">
+PROJECTS = [
+  &quot;&quot;: [],
+  &quot;project1&quot;: [&quot;ENV_ZONE&quot;: &quot;us-central1-b&quot;],
+  &quot;project2&quot;: [&quot;ENV_ZONE&quot;: &quot;us-central1-b&quot;]
+]
+
+// ALL ACTIONS
+ACTIONS = ['', 'APPLY', 'DIFF', 'TEMPLATE']
+
+// ALL RELEASES
+RELEASES = [
+  '',
+  'APP1',
+  'APP2',
+  ]
+
+pipeline {
+
+parameters {
+  choice(name: 'ACTION',   choices: ACTIONS,                   description: 'Action over tenant')
+  choice(name: 'RELEASE',  choices: RELEASES,                  description: 'Release to deploy')
+  choice(name: 'PROJECT',  choices: PROJECTS.keySet() as List, description: 'Deploy resource on account')
+}
+
+options {
+  buildDiscarder(logRotator(numToKeepStr: '20'))
+  ansiColor('xterm')
+}
+
+environment {
+  env_CREDENTIALS_ID = &quot;env-${params.PROJECT.toLowerCase()}&quot;
+  env_PROJECT        = &quot;${params.PROJECT.toLowerCase()}&quot;
+  env_ZONE           = &quot;${PROJECTS[params.PROJECT][&quot;env_ZONE&quot;].toLowerCase()}&quot;
+}
+
+agent {
+  kubernetes {
+    cloud            &quot;kubernetes&quot;
+    label            &quot;provider-env-${env.BRANCH_NAME}-${env.BUILD_NUMBER}&quot;
+    yamlFile         &quot;pod.yaml&quot;
+    defaultContainer &quot;provider-env&quot;
+  }
+}
+
+stages {
+
+stage('(env) Prepare config') {
+  when {
+    allOf {
+      expression { ACTION != '' }
+      branch 'main'
+    }
+    beforeAgent true
+  }
+  steps {
+    withCredentials([file(credentialsId: env.env_CREDENTIALS_ID, variable: 'env_RESOURCE_PROJECT_FILE')]) {
+      sh &quot;&quot;&quot;#!/bin/bash
+      # CONFIGURE RESOURCE PROJECT
+      gcloud auth activate-service-account --key-file=${env_RESOURCE_PROJECT_FILE}
+
+      # CONFIGURE KUBERNETES CREDENTIALS
+      gcloud container clusters get-credentials ${env.env_PROJECT} --zone ${env.env_ZONE} --project ${env.env_PROJECT}
+      &quot;&quot;&quot;
+    }
+  } // `steps` closing
+} // `stage (env) Prepare config` closing
+
+stage('(Helmfile) Action') {
+  when {
+    allOf {
+      expression { ACTION != '' }
+      branch 'main'
+    }
+    beforeAgent true
+  }
+  steps {
+    script {
+      // LOAD CREDENTIALS
+      withCredentials([
+        sshUserPrivateKey(credentialsId: &quot;cred&quot;, keyFileVariable: 'id_rsa'),
+        file(credentialsId: env.env_CREDENTIALS_ID, variable: 'env_RESOURCE_PROJECT_FILE')
+      ]) {
+          sh(&quot;&quot;&quot;
+          export GOOGLE_APPLICATION_CREDENTIALS=${env_RESOURCE_PROJECT_FILE}
+          cd charts/
+          helmfile deps
+          helmfile -e ${env.env_PROJECT} -l name=${params.RELEASE.toLowerCase()} ${params.ACTION.toLowerCase()}
+          &quot;&quot;&quot;)
+      }
+    }
+  } // `steps` closing
+} // `stage (Helmfile) Action` closing
+
+} // `all stages` closing
+
+} // `pipeline` closing
+</code></pre>
+<h1 id="example-4">Example 4<a class="headerlink" href="#example-4" title="Permanent link">&para;</a></h1>
+<pre><code class="language-groovy">pipeline {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start pipeline                                                                //
+/////////////////////////////////////////////////////////////////////////////////////
+
+agent {
+  kubernetes {
+    label &quot;image-updater&quot;
+    yamlFile &quot;pod.yaml&quot;
+    defaultContainer &quot;kaniko&quot;
+  }
+}
+options {
+  disableConcurrentBuilds()
+  buildDiscarder(logRotator(numToKeepStr: '10'))
+}
+triggers {
+  // Every monday between 9:00 and 11:59
+  cron('H(0-59) H(9-11) * * 1')
+}
+
+stages {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start stages                                                                  //
+/////////////////////////////////////////////////////////////////////////////////////
+
+stage('Preparing workspace') {
+  environment {
+    version = VersionNumber(versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILDS_THIS_MONTH}')
+  }
+  steps {
+    withCredentials([
+      file(credentialsId: 'cred', variable: 'DOCKER_CONFIG'),
+    ]) {
+      sh 'cp &quot;${DOCKER_CONFIG}&quot; /kaniko/.docker/config.json'
+    }
+  }
+}
+
+// If you run a pull request for testing purposes will not create lastest tag
+stage('Creating testing images') {
+  when {
+    branch &quot;PR-*&quot;
+  }
+  environment {
+    version = VersionNumber(versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILDS_THIS_MONTH}')
+  }
+  steps {
+    sh '''#!/busybox/sh
+      for IMAGE in $WORKSPACE/images/*; do
+        IMAGE=$(basename $IMAGE)
+
+        /kaniko/executor \
+          --reproducible \
+          --context=&quot;${WORKSPACE}/images/${IMAGE}&quot; \
+          --destination=&quot;artifact.com/devops//${IMAGE}:${version}&quot;
+      done
+    '''
+  }
+}
+
+stage('Creating new images') {
+  when {
+    branch &quot;main&quot;
+  }
+  environment {
+    version = VersionNumber(versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILDS_THIS_MONTH}')
+  }
+  steps {
+    sh '''#!/busybox/sh
+      for IMAGE in $WORKSPACE/images/*; do
+        IMAGE=$(basename $IMAGE)
+
+        /kaniko/executor \
+          --reproducible \
+          --context=&quot;${WORKSPACE}/images/${IMAGE}&quot; \
+          --destination=&quot;artifact.com/devops/${IMAGE}:${version}&quot; \
+          --destination=&quot;artifact.com//devops/${IMAGE}:latest&quot;
+      done
+    '''
+  }
+}
+
+} } // `steps` and `pipeline` closing
+</code></pre>
+<h1 id="example-5">Example 5<a class="headerlink" href="#example-5" title="Permanent link">&para;</a></h1>
+<pre><code class="language-groovy">// @Library(&quot;sonar@lts&quot;) _
+
+// Available Environments
+ENVIRONMENTS = [
+  &quot;dev&quot;: [
+    &quot;KUBERNETES&quot;: &quot;agent-dev&quot;,
+    &quot;POD&quot;:        &quot;pod.yaml&quot;,
+  ],
+  &quot;pro&quot;: [
+    &quot;KUBERNETES&quot;: &quot;agent-pro&quot;,
+    &quot;POD&quot;:        &quot;pod.yaml&quot;,
+  ]
+]
+
+// Available Microservices
+MICROSERVICES = [
+  &quot;ALL&quot;,
+  &quot;MICRO1&quot;,
+  &quot;MICRO2&quot;
+]
+
+
+pipeline {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start pipeline                                                                //
+/////////////////////////////////////////////////////////////////////////////////////
+
+agent {
+  kubernetes {
+    cloud &quot;kubernetes&quot;
+    label &quot;builder&quot;
+    yamlFile &quot;pod.yaml&quot;
+    defaultContainer &quot;node&quot;
+  }
+}
+
+options {
+  disableConcurrentBuilds()
+}
+
+parameters {
+  choice(name: 'ENVIRONMENT',  choices: ENVIRONMENTS.keySet() as List,  description: 'Environment where deploy' )
+  choice(name: 'MICROSERVICE', choices: MICROSERVICES, description: 'Microservice deploy' )
+}
+
+environment {
+  DOCKER_REGISTRY    = &quot;registry.com&quot;
+  REPOSITORY_NAME    = &quot;repo&quot;
+  HELM_RELEASE       = &quot;release&quot;
+  TAG                = &quot;${env.GIT_BRANCH.toLowerCase()}&quot; // This will have main, tag or pr-id
+  TENANT             = &quot;${params.ENVIRONMENT.toLowerCase()}&quot;
+  MICROSERVICE       = &quot;${params.MICROSERVICE.toLowerCase()}&quot;
+  DOCKER_URL         = &quot;${DOCKER_REGISTRY}/${REPOSITORY_NAME}&quot;
+  NAMESPACE          = &quot;default&quot;
+}
+
+stages {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// - Start stages                                                                  //
+/////////////////////////////////////////////////////////////////////////////////////
+
+stage(&quot;Prepare python environment&quot;) {
+  when {
+    branch 'PR-*'
+  }
+  steps {
+    container(&quot;python&quot;) {
+      sh '''
+        apt-get update
+        apt-get install --no-install-recommends --yes git openssh-client curl make postgresql-client
+        pip install --upgrade pip
+        pip install -r requirements-tests.txt
+      '''
+      // Restore dumps for unit tests
+      sh 'psql -h localhost -p 5432 -U postgres &lt; $WORKSPACE/tools/database/postgres/security_assets.sql'
+      // Ingest data in Elastic ephemeral for unit tests
+      sh 'python3 $WORKSPACE/tools/database/elastic/elastic.py'
+    }
+  } // `step` closing
+} // `stage` closing
+
+stage('Tag release') {
+  when {
+    branch &quot;main&quot;
+  }
+  steps {
+    container(&quot;semantic-release&quot;) {
+      script {
+        withCredentials([
+          sshUserPrivateKey(credentialsId: 'cred', keyFileVariable: 'id_rsa')
+        ]) {
+          sh '''
+            export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${id_rsa}'
+            apk add curl sed git openssh
+            semantic-release --plugins &quot;@semantic-release/git&quot;
+          '''
+        }
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+stage('Tests') {
+  when {
+    branch 'PR-*'
+  }
+  environment {
+    LC_ALL = 'en_US.UTF-8'
+    LANG   = 'en_US.UTF-8'
+  }
+  failFast false
+  parallel {
+    stage('Checkstyle test') {
+      steps {
+        container(&quot;python&quot;) {
+          sh 'make lint'
+        }
+      } // `step` closing
+    } // `stage` closing
+  } // `pararell` closing
+} // `main stage` closing
+
+stage('Update Catalogue') {
+  when {
+    branch &quot;main&quot;
+  }
+  steps {
+    container(&quot;python&quot;) {
+      script {
+      withCredentials([
+        sshUserPrivateKey(credentialsId: 'cred', keyFileVariable: 'id_rsa')
+      ])
+        {
+          sh '''
+            apt-get update
+            apt-get install --no-install-recommends --yes git openssh-client
+            export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${id_rsa}'
+            git checkout $GIT_BRANCH
+            git remote add versioner $GIT_URL
+            git fetch versioner
+          '''
+          // Execute catalogue script
+          sh 'python3 $WORKSPACE/tools/catalogue/example.py'
+          // Push changes to bitbucket
+          sh '''
+            export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${id_rsa}'
+            AUTHOR=\$(git show --format=&quot;%ae&quot; $GIT_COMMIT | head -1 | awk -F'@' '{ print $1 }')
+            EMAIL=\$(git show --format=&quot;%ae&quot; $GIT_COMMIT | head -1)
+            git config user.name \\&quot;$AUTHOR\\&quot; &amp;&amp; git config user.email \\&quot;$EMAIL\\&quot;
+            git add .
+            git diff-index --quiet HEAD || git commit -m &quot;docs(catalogue): Update catalogue&quot;
+            git push origin $GIT_BRANCH
+          '''
+        }
+      }
+    }
+  }
+}
+
+stage('Build image') {
+  when {
+    beforeAgent true
+    anyOf{
+      tag pattern: &quot;^v\\d+.\\d+.\\d+(-[0-9a-zA-Z\\.]+)?\$&quot;, comparator: &quot;REGEXP&quot;
+      branch 'PR-*'
+    }
+  }
+  steps {
+    sh 'echo &quot;${TAG}&quot; &gt; $WORKSPACE/VERSION'
+
+    container(&quot;kaniko&quot;) {
+      withCredentials([
+        file(credentialsId: 'cred', variable: 'DOCKER_CONFIG'),])
+        {
+          sh 'cp &quot;${DOCKER_CONFIG}&quot; /kaniko/.docker/config.json'
+        }
+
+      sh '''#!/busybox/sh
+        /kaniko/executor \
+          --reproducible \
+          --context=&quot;${WORKSPACE}&quot; \
+          --destination=&quot;${DOCKER_URL}:${TAG}&quot;
+      '''
+    }
+  } // `step` closing
+} // `stage` closing
+
+stage('Deploy preview environment') {
+  when {
+    beforeAgent true
+    branch 'PR-*'
+  }
+  agent {
+    kubernetes {
+      cloud ENVIRONMENTS[&quot;DEV&quot;][&quot;KUBERNETES&quot;]
+      label &quot;preview&quot;
+      yamlFile ENVIRONMENTS[&quot;DEV&quot;][&quot;POD&quot;]
+    }
+  }
+  environment {
+    ingress = &quot;app-${TAG}.${NAMESPACE}-dns.internal&quot;
+    preview_values = &quot;ephemeral.yaml&quot;
+  }
+  steps {
+    container(&quot;helmfile&quot;) {
+      dir(&quot;charts&quot;) {
+        sh '''
+          echo &quot;appVersion: ${TAG}&quot;                                 &gt;&gt; releases/base/${HELM_RELEASE}/Chart.yaml
+          sed -i &quot;s/- host: TO_BE_FILLED_BY_CI/- host: ${ingress}/&quot;    bases/${preview_values}
+        '''
+
+        sh '''
+          helmfile -l name=${HELM_RELEASE}-secrets -e DEV-ephemeral apply
+        '''
+
+        sh '''
+          helmfile -e DEV-ephemeral apply
+        '''
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+stage('Deploy environment: All microservices') {
+  when {
+    beforeAgent true
+    tag pattern: &quot;^v\\d+.\\d+.\\d+(-[0-9a-zA-Z\\.]+)?\$&quot;, comparator: &quot;REGEXP&quot;
+    allOf{
+      expression { params.MICROSERVICE == 'ALL'}
+      expression { params.ENVIRONMENT == 'DEV' || params.ENVIRONMENT == 'PRO' }
+    }
+  }
+  agent {
+    kubernetes {
+      cloud ENVIRONMENTS[params.ENVIRONMENT][&quot;KUBERNETES&quot;]
+      label &quot;deployer-${params.ENVIRONMENT.toLowerCase()}&quot;
+      yamlFile ENVIRONMENTS[params.ENVIRONMENT][&quot;POD&quot;]
+    }
+  }
+  steps {
+    container(&quot;helmfile&quot;) {
+      dir(&quot;charts&quot;) {
+        sh '''
+          echo &quot;appVersion: ${TAG}&quot; &gt;&gt; releases/base/${HELM_RELEASE}/Chart.yaml
+        '''
+
+        sh '''
+          helmfile -l name=${HELM_RELEASE}-secrets -e ${TENANT} apply
+        '''
+
+        sh '''
+          helmfile -e ${TENANT} apply
+        '''
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+stage('Deploy to environment: Single microservices') {
+  when {
+    beforeAgent true
+    tag pattern: &quot;^v\\d+.\\d+.\\d+(-[0-9a-zA-Z\\.]+)?\$&quot;, comparator: &quot;REGEXP&quot;
+    anyOf{
+      expression { params.MICROSERVICE != 'ALL'}
+    }
+  }
+  agent {
+    kubernetes {
+      cloud ENVIRONMENTS[params.ENVIRONMENT][&quot;KUBERNETES&quot;]
+      label &quot;PRO-deployer-${params.ENVIRONMENT.toLowerCase()}&quot;
+      yamlFile ENVIRONMENTS[params.ENVIRONMENT][&quot;POD&quot;]
+    }
+  }
+  steps {
+    container(&quot;helmfile&quot;) {
+      dir(&quot;charts&quot;) {
+        sh '''
+          echo &quot;appVersion: ${TAG}&quot; &gt;&gt; releases/base/${HELM_RELEASE}/Chart.yaml
+        '''
+
+        sh '''
+          helmfile -l name=${HELM_RELEASE}-secrets -e ${TENANT} apply
+        '''
+
+        sh '''
+          helmfile -l name=${HELM_RELEASE}-${MICROSERVICE} -e ${TENANT} apply
+        '''
+      }
+    }
+  } // `step` closing
+} // `stage` closing
+
+} // `all stages` closing
+} // `pipeline` closing
+</code></pre>
+<h1 id="example-6">Example 6<a class="headerlink" href="#example-6" title="Permanent link">&para;</a></h1>
+<pre><code class="language-groovy">TENANTS = [
+  &quot;&quot;: [],
+  &quot;dev&quot;: [
+    &quot;AWS_DEFAULT_REGION&quot;:  &quot;us-east-1&quot;,
+    &quot;AWS_CREDENTIALS&quot;:     &quot;aws-dev&quot;,
+    &quot;AWS_ASSUME_ROLE_ARN&quot;: &quot;arn:aws:iam::000000000000:role/dev&quot;,
+    &quot;AWS_EXTERNAL_ID&quot;:     &quot;000000000000&quot;,
+    &quot;SSH_KEY&quot;:             &quot;dev-key&quot;,
+    &quot;TENANT&quot;:              &quot;dev&quot;,
+  ],
+  &quot;pro&quot;: [
+    &quot;AWS_DEFAULT_REGION&quot;:  &quot;us-east-1&quot;,
+    &quot;AWS_CREDENTIALS&quot;:     &quot;aws-pro&quot;,
+    &quot;AWS_ASSUME_ROLE_ARN&quot;: &quot;arn:aws:iam::111111111111:role/dev&quot;,
+    &quot;AWS_EXTERNAL_ID&quot;:     &quot;111111111111&quot;,
+    &quot;SSH_KEY&quot;:             &quot;pro-key&quot;,
+    &quot;TENANT&quot;:              &quot;pro&quot;,
+  ]
+]
+
+// @function: terraform
+def terraform(status) {
+  sh &quot;&quot;&quot;#!/bin/bash
+    # VARS
+    export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+    export GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -i ${id_rsa}'
+    export TF_VAR_aws_assume_role_arn=&quot;${AWS_ASSUME_ROLE_ARN}&quot;
+    export TF_VAR_aws_external_id=&quot;${AWS_EXTERNAL_ID}&quot;
+
+    # WOKRKDIR
+    cd ${WORKSPACE}/terraform/tenant/${TENANT}/
+
+    # Show current dir
+    echo &quot;###########################################&quot;
+    for i in \$(ls -d */ | cut -d &quot; &quot; -f10); do
+      echo &quot;Terraform directory: \${i}&quot;
+
+    done
+    echo &quot;###########################################&quot;
+
+    for i in \$(ls -d */ | cut -d &quot; &quot; -f10); do
+      cd ${WORKSPACE}/terraform/tenant/${TENANT}/\${i}/
+      echo &quot;The current workdir is: \${i}&quot;
+
+      # EXECUTION
+      ## get modules and instance backend
+      terraform init \
+        -backend-config=&quot;role_arn=\${AWS_ASSUME_ROLE_ARN}&quot; \
+        -backend-config=&quot;external_id=\${AWS_EXTERNAL_ID}&quot;
+
+      ## validate syntax and show changes
+      terraform validate
+      tflint --init
+
+      ## conditional to deploy/destroy or plan
+      if [[ &quot;${status}&quot; != &quot;plan&quot; ]]; then
+        terraform ${status} -auto-approve
+      else
+        terraform ${status}
+      fi
+    done
+  &quot;&quot;&quot;
+}
+
+pipeline {
+
+parameters {
+  choice(name: 'ACTION',  choices: ['', 'DEPLOY', 'PLAN', 'DESTROY'], description: 'Action over tenant')
+  choice(name: 'TENANT',  choices: TENANTS.keySet() as List,          description: 'Deploy tenant')
+}
+
+options {
+  buildDiscarder(logRotator(numToKeepStr: '20'))
+  ansiColor('xterm')
+}
+
+environment {
+  ANSIBLE_FORCE_COLOR = true
+  AWS_ASSUME_ROLE_ARN = &quot;${TENANTS[params.TENANT][&quot;AWS_ASSUME_ROLE_ARN&quot;]}&quot;
+  AWS_CREDENTIALS     = &quot;${TENANTS[params.TENANT][&quot;AWS_CREDENTIALS&quot;]}&quot;
+  AWS_DEFAULT_REGION  = &quot;${TENANTS[params.TENANT][&quot;AWS_DEFAULT_REGION&quot;]}&quot;
+  AWS_EXTERNAL_ID     = &quot;${TENANTS[params.TENANT][&quot;AWS_EXTERNAL_ID&quot;]}&quot;
+  SSH_KEY             = &quot;${TENANTS[params.TENANT][&quot;SSH_KEY&quot;]}&quot;
+  TENANT              = &quot;${TENANTS[params.TENANT][&quot;TENANT&quot;]}&quot;
+  TFLINT_LOG          = &quot;info&quot;
+}
+
+agent {
+  kubernetes {
+    cloud            &quot;kubernetes&quot;
+    label            &quot;k8s-${env.BRANCH_NAME}-${env.BUILD_NUMBER}&quot;
+    yamlFile         &quot;pod.yaml&quot;
+    defaultContainer &quot;alpine&quot;
+  }
+}
+
+stages {
+
+stage('(AWS) Prepare config') {
+  when {
+    allOf {
+      expression { ACTION != '' }
+      branch 'main'
+    }
+    beforeAgent true
+  }
+  steps {
+    withAWS(credentials: AWS_CREDENTIALS) {
+      sh &quot;&quot;&quot;#!/bin/bash
+        # HOTFIX: config permission
+        chown root:root /root/.ssh/config
+        chmod 644 /root/.ssh/config
+
+        # AWS configs
+        mkdir -p ~/.aws
+        ## config
+        echo &quot;[profile default]&quot; &gt;&gt; ~/.aws/config
+        echo &quot;output = json&quot; &gt;&gt; ~/.aws/config
+        echo &quot;region = ${env.AWS_DEFAULT_REGION}&quot; &gt;&gt; ~/.aws/config
+        echo &quot;role_arn = ${env.AWS_ASSUME_ROLE_ARN}&quot; &gt;&gt; ~/.aws/config
+        echo &quot;source_profile = default&quot; &gt;&gt; ~/.aws/config
+        echo &quot;external_id = ${env.AWS_EXTERNAL_ID}&quot; &gt;&gt; ~/.aws/config
+
+        ## credentials
+        echo &quot;[default]&quot; &gt;&gt; ~/.aws/credentials
+        echo &quot;aws_access_key_id = ${env.AWS_ACCESS_KEY_ID}&quot; &gt;&gt; ~/.aws/credentials
+        echo &quot;aws_secret_access_key = ${env.AWS_SECRET_ACCESS_KEY}&quot; &gt;&gt; ~/.aws/credentials
+      &quot;&quot;&quot;
+    }
+  } // `steps` closing
+} // `stage (AWS) Prepare config` closing
+
+stage('(Terraform) Review changes') {
+  when {
+    allOf {
+      expression { ACTION == 'PLAN' || ACTION == 'DEPLOY' }
+      branch 'main'
+    }
+    beforeAgent true
+  }
+  steps {
+    script {
+      // LOAD CREDENTIALS
+      withAWS(credentials: AWS_CREDENTIALS) {
+        withCredentials([
+          sshUserPrivateKey(credentialsId: &quot;cred&quot;, keyFileVariable: 'id_rsa')
+        ])
+        {
+          // execute terraform plan
+          terraform('plan')
+        }
+      }
+    }
+  } // `steps` closing
+} // `stage (Terraform) Review changes` closing
+
+stage('(Terraform) Deploy infraestructure') {
+  when {
+    allOf {
+      expression { ACTION == 'DEPLOY' }
+      branch 'main'
+    }
+    beforeAgent true
+  }
+  steps {
+    script {
+      // LOAD CREDENTIALS
+      withAWS(credentials: AWS_CREDENTIALS) {
+        withCredentials([
+          sshUserPrivateKey(credentialsId: &quot;cred&quot;, keyFileVariable: 'id_rsa')
+        ])
+        {
+          // execute terraform apply
+          terraform('apply')
+        }
+      }
+    }
+  } // `steps` closing
+} // `stage (Terraform) Deploy infraestructure` closing
+
+stage('(Terraform) Destroy infraestructure') {
+  when {
+    allOf {
+      expression { ACTION == 'DESTROY' }
+      branch 'main'
+    }
+    beforeAgent true
+  }
+  steps {
+    script {
+      // LOAD CREDENTIALS
+      withAWS(credentials: AWS_CREDENTIALS) {
+        withCredentials([
+          sshUserPrivateKey(credentialsId: &quot;cred&quot;, keyFileVariable: 'id_rsa')
+        ])
+        {
+          // execute terraform destroy
+          terraform('destroy')
+        }
+      }
+    }
+  } // `steps` closing
+} // `stage (Terraform) Destroy infraestructure` closing
+
+} // `all stages` closing
+
+} // `pipeline` closing
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../gitlabci/" class="btn btn-neutral float-left" title="GitlabCI"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../code/go/" class="btn btn-neutral float-right" title="Go">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/amartingarcia/notes" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../gitlabci/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../code/go/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

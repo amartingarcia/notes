@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Adrián Martín García" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Multi-accounts - MyNotes</title>
+    <title>Azure Devops - MyNotes</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Multi-accounts";
-        var mkdocs_page_input_path = "git/multi_accounts.md";
+        var mkdocs_page_name = "Azure Devops";
+        var mkdocs_page_input_path = "cicd/azuredevops.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -57,16 +57,16 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">CI/CD</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cicd/azuredevops/">Azure Devops</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Azure Devops</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cicd/bitbucket/">Bitbucket</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../bitbucket/">Bitbucket</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cicd/github/">Github Actions</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../github/">Github Actions</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cicd/gitlabci/">GitlabCI</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../gitlabci/">GitlabCI</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../cicd/jenkins/">Jenkins</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../jenkins/">Jenkins</a>
     <ul>
     </ul>
                   </li>
@@ -95,9 +95,9 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Git</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Multi-accounts</a>
-    <ul class="current">
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../git/multi_accounts/">Multi-accounts</a>
+    <ul>
     </ul>
                   </li>
               </ul>
@@ -330,10 +330,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-          <li>Git &raquo;</li>
-      <li>Multi-accounts</li>
+          <li>CI/CD &raquo;</li>
+      <li>Azure Devops</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/amartingarcia/notes/edit/master/docs/git/multi_accounts.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/amartingarcia/notes/edit/master/docs/cicd/azuredevops.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -341,39 +341,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="multi-accounts">Multi-Accounts<a class="headerlink" href="#multi-accounts" title="Permanent link">&para;</a></h1>
-<p>Sometimes it may be necessary to set up different git accounts for different directories.<br />
-In my computer I use the following configuration:</p>
-<p><code>~/.ssh/config.d/git</code></p>
-<pre><code class="language-sh">Host github.com
-    HostName github.com
-    User git
-    IdentityFile ~/.ssh/keys/github
-
-Host ssh.dev.azure.com
-    HostName ssh.dev.azure.com
-    User git
-    IdentityFile ~/.ssh/keys/azdevops    
-</code></pre>
-<p><code>~/.gitconfig</code></p>
-<pre><code class="language-sh">[user]
-        name = fullname-fake
-        email = username-fake@company-fake.com
-
-[includeIf &quot;gitdir:~/repos/personal/&quot;]
-        path = ~/repos/personal/.gitconfig
-</code></pre>
-<p><code>~/repo/personal/.gitconfig</code></p>
-<pre><code class="language-sh">[user]
-  name = personal-username-fake
-  email = personal-email-fake
-</code></pre>
+                <hr />
+<p>title: CICD - Azure Devops<br />
+date: 20230607<br />
+author: Adrián Martín García</p>
+<hr />
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../containers/registries/" class="btn btn-neutral float-left" title="Registries"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../gitops/argocd/" class="btn btn-neutral float-right" title="ArgoCD">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../bbdd/nosql/" class="btn btn-neutral float-left" title="NoSQL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../bitbucket/" class="btn btn-neutral float-right" title="Bitbucket">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -400,10 +378,10 @@ Host ssh.dev.azure.com
         </span>
     
     
-      <span><a href="../../containers/registries/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../bbdd/nosql/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../gitops/argocd/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../bitbucket/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
