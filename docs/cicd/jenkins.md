@@ -8,7 +8,7 @@ author: Adrián Martín García
 # Jenkinsfiles
 On this section declare some Jenkinsfile documentated.
 
-# Example 1
+## Example 1
 ```groovy
 // Available environments in which it can be deployed
 ENVIRONMENTS = [
@@ -204,7 +204,7 @@ post {
 } // `pipeline` closing
 ```
 
-# Example 2
+## Example 2
 ```groovy
 // Name of the repository and its download link
 def map1 = [
@@ -368,7 +368,7 @@ stage (' Deploy phase 3') {
 } // pipeline
 ```
 
-# Example 3
+## Example 3
 ```groovy
 
 PROJECTS = [
@@ -469,7 +469,7 @@ stage('(Helmfile) Action') {
 } // `pipeline` closing
 ```
 
-# Example 4
+## Example 4
 ```groovy
 pipeline {
 
@@ -559,7 +559,7 @@ stage('Creating new images') {
 } } // `steps` and `pipeline` closing
 ```
 
-# Example 5
+## Example 5
 ```groovy
 // @Library("sonar@lts") _
 
@@ -859,7 +859,7 @@ stage('Deploy to environment: Single microservices') {
 } // `pipeline` closing
 ```
 
-# Example 6
+## Example 6
 ```groovy
 TENANTS = [
   "": [],
