@@ -14,6 +14,18 @@ $ minikube start -p kyverno --container-runtime=containerd --docker-opt containe
 ```sh
 $ helm repo add kyverno https://kyverno.github.io/kyverno/
 $ helm repo update
+$ cat <<EOF >> values.yaml
+---
+cleanupController:
+  rbac:
+    clusterRole:
+      extraResources:
+      - apiGroups:
+          - 'apps'
+        resources:
+          - 'deployments'
+EOF
+
 $ helm upgrade --install kyverno -n kyverno -f values.yaml --create-namespace kyverno/kyverno --version 3.0.0
 ```
 
