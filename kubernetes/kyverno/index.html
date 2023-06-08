@@ -227,25 +227,81 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Kyverno</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#politicas-y-reglas">Políticas y Reglas</a>
+    <li class="toctree-l2"><a class="reference internal" href="#start-minikube">Start minikube</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#add-helm-repo-and-install-it">Add Helm Repo and install it</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#policies-and-rules">Policies and Rules</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#policy-enforcement">Policy enforcement</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a>
+    <li class="toctree-l3"><a class="reference internal" href="#configurations">Configurations</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#resource-selector">Resource selector</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#validate-rules">Validate rules</a>
+    <li class="toctree-l3"><a class="reference internal" href="#validate-rules">Validate Rules</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#patterns">Patterns</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#mutate-rules">Mutate Rules</a>
+    <li class="toctree-l4"><a class="reference internal" href="#operators">Operators</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#generate-rules">Generate Rules</a>
+    <li class="toctree-l4"><a class="reference internal" href="#anchors-if-then-else">Anchors ("if-then-else")</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#required-labels">Required labels</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#check-resources">Check Resources</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#foreach">Foreach</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mutate">Mutate</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#imagepullpolicy">ImagePullPolicy</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#nodeselector">NodeSelector</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#tolerations">Tolerations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#generate">Generate</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configmap">Configmap</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#clone">Clone</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#verify-images">Verify Images</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#cleanup">Cleanup</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#testing-policies">Testing policies</a>
+    <li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#reporting">Reporting</a>
+    <li class="toctree-l3"><a class="reference internal" href="#external-data-sources">External Data Sources</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#configmaps">Configmaps</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reporting">Reporting</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get-and-describe-result">Get and Describe result</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kyvernocli">KyvernoCLI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#apply">Apply</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example-1">Example 1</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-2-with-policy-report">Example 2 with Policy Report</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -378,29 +434,40 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="kyverno">Kyverno<a class="headerlink" href="#kyverno" title="Permanent link">&para;</a></h1>
-<p>Kyverno is an open source policy engine for Kubernetes, a popular container orchestration platform. It provides a way to apply custom policies and rules to manage and secure Kubernetes resources.</p>
-<p>With Kyverno, you can define policies as code using a declarative language. These policies are applied to Kubernetes resources at runtime, allowing you to enforce various configurations, security rules, and best practices.</p>
-<h2 id="politicas-y-reglas">Políticas y Reglas<a class="headerlink" href="#politicas-y-reglas" title="Permanent link">&para;</a></h2>
-<p>A policy is a collection of rules. Each rule consists of a <code>match</code> or <code>exclude</code> statement. And a <code>validate</code>, <code>mutate</code> or <code>generate</code> statement. It is also possible to specify <code>Verify Images</code> rules.</p>
-<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
-<p>Policies can contain one or more rules and you can specify some common settings:
-* <code>applyRules</code>: indicates how many rules to apply One|All.
-* <code>background</code>: controls the scanning of existing resources.
-* <code>failurePolicy</code>: API Server behaviour if the webhook does not respond.
-* <code>generateExisting</code>: controls whether to evaluate the policy at the time it is created.
-* mutateExistingOnPolicyUpdate<code>: evaluates rule when it is updated.
-*</code>schemaValidation<code>: policy validation check.
-*</code>validationFailureAction<code>: Enforce (blocking) or Audit (non-blocking).
-*</code>validationFailureActionOverrides<code>: override validationFailureAction
-* webhookTimeoutSeconds</code>: maximum time to apply the policy.</p>
+<h2 id="start-minikube">Start minikube<a class="headerlink" href="#start-minikube" title="Permanent link">&para;</a></h2>
+<pre><code class="language-sh">$ minikube start -p kyverno --container-runtime=containerd --docker-opt containerd=/var/run/containerd/containerd.sock --driver=virtualbox
+</code></pre>
+<h2 id="add-helm-repo-and-install-it">Add Helm Repo and install it<a class="headerlink" href="#add-helm-repo-and-install-it" title="Permanent link">&para;</a></h2>
+<pre><code class="language-sh">$ helm repo add kyverno https://kyverno.github.io/kyverno/
+$ helm repo update
+$ helm upgrade --install kyverno -n kyverno -f values.yaml --create-namespace kyverno/kyverno --version 3.0.0
+</code></pre>
+<h2 id="policies-and-rules">Policies and Rules<a class="headerlink" href="#policies-and-rules" title="Permanent link">&para;</a></h2>
+<p>A Kyverno policy is a collection of rules. Each rule consists of a <code>match</code> declaration, an optional <code>exclude</code> declaration, and one of a <code>validate</code>, <code>mutate</code>, <code>generate</code>, or <code>verifyImages</code> declaration. Each rule can contain only a single validate, mutate, generate, or verifyImages child declaration.</p>
+<p>Las politicas se pueden definir como recurso de todo el clúster (<code>ClusterPolicy</code>) o recursos de espacio de nombres (<code>Policy</code>).</p>
+<h2 id="policy-enforcement">Policy enforcement<a class="headerlink" href="#policy-enforcement" title="Permanent link">&para;</a></h2>
+<p>Policies can be enforced in clusters or in pipelines. On installation a kyverno cluster runs as an admission controller, however rules can be evaluated via the Kyverno CLI.</p>
+<h3 id="configurations">Configurations<a class="headerlink" href="#configurations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>applyRules</code>: indicates how many rules to apply One|All. </li>
+<li><code>background</code>: controls the scanning of existing resources. </li>
+<li><code>failurePolicy</code>: API Server behaviour if the webhook does not respond. </li>
+<li><code>generateExisting</code>: controls whether to evaluate the policy at the time it is created. </li>
+<li><code>mutateExistingOnPolicyUpdate</code>: evaluates rule when it is updated.</li>
+<li><code>schemaValidation</code>: policy validation check.</li>
+<li><code>validationFailureAction</code>: Enforce (blocking) or Audit (non-blocking).</li>
+<li><code>validationFailureActionOverrides</code>: override validationFailureAction</li>
+<li><code>webhookTimeoutSeconds</code>: maximum time to apply the policy.</li>
+</ul>
+<p><em>Use <code>kubectl explain policy.spec</code> for command-line help on the policy schema.</em></p>
 <h3 id="resource-selector">Resource selector<a class="headerlink" href="#resource-selector" title="Permanent link">&para;</a></h3>
-<p>The match and exclude filters control the resources to which the policy is applied.
+<p>The match and exclude filters control the resources to which the policy is applied. 
 * any: as <strong>OR</strong>
 * all: as <strong>AND</strong></p>
-<p>Resource filters can be applied to:
-* resources: resources by name, namespaces, types, operations, tags, annotations, or selectors.
-* subjets: user, group, or service accounts.
-* roles
+<p>Resource filters can be applied to: 
+* resources: resources by name, namespaces, types, operations, tags, annotations, or selectors. 
+* subjets: user, group, or service accounts. 
+* roles 
 * clusterRoles</p>
 <pre><code class="language-yaml">spec:
   rules:
@@ -424,9 +491,46 @@
         - kind: User
           name: dave
 </code></pre>
-<h3 id="validate-rules">Validate rules<a class="headerlink" href="#validate-rules" title="Permanent link">&para;</a></h3>
-<p>For example, allowing to generate an alert for all Pods in the cluster that do not contain the <code>team</code> tag (with any value), and blocking the creation of Pods that do not have the <code>team</code> tag in the <code>req-labels</code> namespace.</p>
-<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+<h3 id="validate-rules">Validate Rules<a class="headerlink" href="#validate-rules" title="Permanent link">&para;</a></h3>
+<p>These are the most common rules. The behaviour of how Kyverno responds to a validation is determined by the <code>validationFailureAction</code> field. Which can be blocked (<code>Enforce</code>) or allowed and registered (<code>Audit</code>).</p>
+<p>You can use:</p>
+<h4 id="patterns"><code>Patterns</code><a class="headerlink" href="#patterns" title="Permanent link">&para;</a></h4>
+<ul>
+<li>&rsquo;*&rsquo;</li>
+<li>&rsquo;?&rsquo;</li>
+<li>&rsquo;?*&rsquo;</li>
+<li>&lsquo;null&rsquo;</li>
+</ul>
+<h4 id="operators"><code>Operators</code><a class="headerlink" href="#operators" title="Permanent link">&para;</a></h4>
+<ul>
+<li>&rsquo;&gt;&rsquo;   greater than</li>
+<li>&rsquo;&lt;&rsquo;   less than</li>
+<li>&rsquo;&gt;=&rsquo;  greater than or equals to</li>
+<li>&rsquo;&lt;=&rsquo;  less than or equals to</li>
+<li>&rsquo;!&rsquo;   not equals</li>
+<li>&rsquo;|&rsquo;   logical or</li>
+<li>&lsquo;&amp;&rsquo;   logical and</li>
+<li>&rsquo;-&lsquo;   within a range</li>
+<li>&rsquo;!-&lsquo;  outside a range</li>
+</ul>
+<h4 id="anchors-if-then-else"><code>Anchors</code> <em>(&ldquo;if-then-else&rdquo;)</em><a class="headerlink" href="#anchors-if-then-else" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>Conditional</code>   <strong>()</strong>  If tag with the given value (including child elements) is specified, then peer elements will be processed.<br />
+e.g. If image has tag latest then imagePullPolicy cannot be IfNotPresent.</li>
+<li><code>Equality</code> <strong>=()</strong>  If tag is specified, then processing continues. For tags with scalar values, the value must match. For tags with child elements, the child element is further evaluated as a validation pattern.</li>
+<li><code>Existence</code> <strong>^()</strong> Works on the list/array type only. If at least one element in the list satisfies the pattern. In contrast, a conditional anchor would validate that all elements in the list match the pattern.</li>
+<li><code>Negation</code>  <strong>X()</strong> The tag cannot be specified. The value of the tag is not evaluated (use exclamation point to negate a value). The value should ideally be set to &ldquo;null&rdquo; (quotes surrounding null).</li>
+<li><code>Global</code>    <strong>&lt;()</strong> The content of this condition, if false, will cause the entire rule to be skipped. Valid for both validate and strategic merge patches.</li>
+</ul>
+<h4 id="required-labels">Required labels<a class="headerlink" href="#required-labels" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: req-labels
+---
+apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: require-labels
@@ -449,15 +553,182 @@ spec:
         metadata:
           labels:
             team: &quot;?*&quot;
+EOF
+
+# Create pod without labels
+$ kubectl create deployment labels --image=nginx -n req-labels
+error: failed to create deployment: admission webhook &quot;validate.kyverno.svc-fail&quot; denied the request: 
+
+resource Deployment/req-labels/nginx was blocked due to the following policies 
+
+require-labels:
+  autogen-check-team: 'validation error: label ''team'' is required. rule autogen-check-team
+    failed at path /spec/template/metadata/labels/team/'
+
+# Create pod with labels
+$ kubectl run labels --image nginx --labels team=backend -n req-labels 
+pod/labels created
 </code></pre>
-<p>The patterns you can use are:
-* &lsquo;<em>&lsquo;
-* &lsquo;?&rsquo;
-* &lsquo;?</em>&lsquo;
-* &lsquo;null&rsquo;</p>
-<h3 id="mutate-rules">Mutate Rules<a class="headerlink" href="#mutate-rules" title="Permanent link">&para;</a></h3>
-<p>For example, it allows to mutate all Pods in the <code>pull-policy</code> namespace that define an image <code>:latest</code> by setting an <code>imagePullPolicy</code> to <code>IfNotPresent</code>.</p>
-<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+<h4 id="check-resources">Check Resources<a class="headerlink" href="#check-resources" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: check-resources
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-container-resources
+spec:
+  validationFailureAction: Audit
+  validationFailureActionOverrides:
+    - action: Enforce
+      namespaces:
+        - check-resources
+  rules:
+  - name: check-container-resources
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    validate:
+      message: &quot;All containers must have CPU and memory resource requests and limits defined.&quot;
+      pattern:
+        spec:
+          containers:
+          - name: &quot;*&quot;
+            resources:
+              limits:
+                memory: &quot;?*&quot;
+                cpu: &quot;&lt;=0.6&quot;
+EOF
+
+# Create Pod without resources
+$ kubectl run frontend --image resources -n check-resources
+Error from server: admission webhook &quot;validate.kyverno.svc-fail&quot; denied the request: 
+
+resource Pod/default/nginx2 was blocked due to the following policies 
+
+check-container-resources:
+  check-container-resources: 'validation error: All containers must have CPU and memory
+    resource requests and limits defined. rule check-container-resources failed at
+    path /spec/containers/0/resources/limits/'
+
+# Create Pod with resources
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resources
+  namespace: check-resources
+  labels:
+    team: resources
+spec:
+  containers:
+  - name: app
+    image: nginx
+    resources:
+      requests:
+        memory: &quot;64Mi&quot;
+        cpu: 0.1
+      limits:
+        memory: &quot;128Mi&quot;
+        cpu: 0.5
+EOF
+</code></pre>
+<h4 id="foreach">Foreach<a class="headerlink" href="#foreach" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion : kyverno.io/v2beta1
+kind: ClusterPolicy
+metadata:
+  name: check-ingress
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+  - name: check-tls-secret-host
+    match:
+      any:
+      - resources:
+          kinds:
+          - Ingress
+    validate:
+      message: &quot;All TLS hosts must use a domain of old.com.&quot;  
+      foreach:
+      - list: request.object.spec.tls[]
+        foreach:
+        - list: &quot;element.hosts&quot;
+          deny:
+            conditions:
+              all:
+              - key: &quot;{{element}}&quot;
+                operator: Equals
+                value: &quot;*.new.com&quot;
+EOF
+
+# Create Ingress resource
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kuard
+  labels:
+    app: kuard
+spec:
+  rules:
+  - host: kuard.old.com
+    http:
+      paths:
+      - backend:
+          service: 
+            name: kuard
+            port: 
+              number: 8080
+        path: /
+        pathType: ImplementationSpecific
+  - host: hr.old.com
+    http:
+      paths:
+      - backend:
+          service: 
+            name: kuard
+            port: 
+              number: 8090
+        path: /myhr
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - kuard.old.com
+    - kuard-foo.new.com
+    secretName: foosecret.old.com
+  - hosts:
+    - hr.old.com
+    secretName: hr.old.com
+EOF
+
+Error from server: error when creating &quot;k8s_objects/validate/ingress.yaml&quot;: admission webhook &quot;validate.kyverno.svc-fail&quot; denied the request: 
+
+resource Ingress/default/kuard was blocked due to the following policies 
+
+check-ingress:
+  check-tls-secret-host: 'validation failure: validation failure: All TLS hosts must
+    use a domain of old.com.'
+</code></pre>
+<h3 id="mutate">Mutate<a class="headerlink" href="#mutate" title="Permanent link">&para;</a></h3>
+<p>The mutate rule can be used to modify matching resources and is written as RFC 6902 JSON Patch or a strategic merge patch.</p>
+<h4 id="imagepullpolicy">ImagePullPolicy<a class="headerlink" href="#imagepullpolicy" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pull-policy
+---
+apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: set-image-pull-policy
@@ -479,9 +750,98 @@ spec:
               - (image): &quot;*:latest&quot;
                 # set the imagePullPolicy to &quot;IfNotPresent&quot;
                 imagePullPolicy: &quot;IfNotPresent&quot;
+EOF
+
+# Create Pod
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kyverno-pull-policy
+  namespace: pull-policy
+  labels:
+    team: kyverno-pull-policy
+spec:
+  containers:
+  - name: app
+    image: nginx:latest
+    imagePullPolicy: Always
+    resources:
+      requests:
+        memory: &quot;64Mi&quot;
+        cpu: 0.1
+      limits:
+        memory: &quot;128Mi&quot;
+        cpu: 0.5
+
+EOF
+
+$ kubectl -n pull-policy get po kyverno-pull-policy -oyaml | grep -i imagePullPolicy:
+    imagePullPolicy: IfNotPresent
 </code></pre>
-<p>Some mutations cannot be performed by patchStrategicMerge so you must use patchesJson6902.</p>
-<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+<h4 id="nodeselector">NodeSelector<a class="headerlink" href="#nodeselector" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: medium
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-nodeselector
+spec:
+  rules:
+  - name: add-medium
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+          namespaces:
+          - medium
+    mutate:
+      patchStrategicMerge:
+        spec:
+          nodeSelector:
+            type: medium
+EOF
+
+# Create Pod
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kyverno-node-selector
+  namespace: medium
+  labels:
+    team: kyverno-node-selector
+spec:
+  containers:
+  - name: app
+    image: nginx
+    resources:
+      requests:
+        memory: &quot;64Mi&quot;
+        cpu: 0.1
+      limits:
+        memory: &quot;128Mi&quot;
+        cpu: 0.5
+EOF
+
+$ kubectl -n medium get po -oyaml | grep -i nodeselector -A1
+    nodeSelector:
+      type: medium
+</code></pre>
+<h4 id="tolerations">Tolerations<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tolerations
+---
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
@@ -510,10 +870,35 @@ spec:
             operator: Equal
             value: common
             effect: NoSchedule
+EOF
+
+# Create Pod
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tolerations
+  namespace: tolerations
+  labels:
+    team: tolerations
+spec:
+  containers:
+  - name: app
+    image: nginx
+EOF
+
+$ kubectl -n medium get po -oyaml
+...
+    - effect: NoSchedule
+      key: app
+      operator: Equal
+      value: common
 </code></pre>
-<h3 id="generate-rules">Generate Rules<a class="headerlink" href="#generate-rules" title="Permanent link">&para;</a></h3>
-<p>It is possible to create Kubernetes objects as a ConfigMap with some data in all namespaces except the excluded list.</p>
-<pre><code class="language-yaml">apiVersion: kyverno.io/v1
+<h3 id="generate">Generate<a class="headerlink" href="#generate" title="Permanent link">&para;</a></h3>
+<p>Generation rules can be used to create new Kubernetes resources.</p>
+<h4 id="configmap">Configmap<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh">$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: zk-kafka-address
@@ -549,10 +934,62 @@ spec:
         data:
           ZK_ADDRESS: &quot;192.168.10.10:2181,192.168.10.11:2181,192.168.10.12:2181&quot;
           KAFKA_ADDRESS: &quot;192.168.10.13:9092,192.168.10.14:9092,192.168.10.15:9092&quot;
+EOF
+
+$ kubectl get cm -A | grep zk-kafka-address
+check-resources   zk-kafka-address                     2      14s
+medium            zk-kafka-address                     2      14s
+pull-policy       zk-kafka-address                     2      14s
+req-labels        zk-kafka-address                     2      14s
+tolerations       zk-kafka-address                     2      14s
+</code></pre>
+<h4 id="clone">Clone<a class="headerlink" href="#clone" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh"># Create Secret
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+data:
+  admin: cGFzc3M=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: regcred
+EOF
+
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: sync-secrets
+spec:
+  rules:
+  - name: sync-image-pull-secret
+    match:
+      any:
+      - resources:
+          kinds:
+          - Namespace
+    generate:
+      apiVersion: v1
+      kind: Secret
+      name: regcred
+      namespace: &quot;{{request.object.metadata.name}}&quot;
+      synchronize: true
+      clone:
+        namespace: default
+        name: regcred
+EOF
+
+# Create a new namespace
+$ kubectl create ns sync-secret
+
+# Get secrets
+$ k -n sync-secret get secret
+NAME      TYPE     DATA   AGE
+regcred   Opaque   1      5s
 </code></pre>
 <h3 id="verify-images">Verify Images<a class="headerlink" href="#verify-images" title="Permanent link">&para;</a></h3>
-<p>It is possible to verify images with Notary and Sigstore.</p>
-<pre><code class="language-yaml">#Notary
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
 apiVersion: kyverno.io/v2beta1
 kind: ClusterPolicy
 metadata:
@@ -596,42 +1033,43 @@ spec:
                 ByCEQNhtHgN6V20b8KU2oLBZ9vyB8V010dQz0NRTDLhkcvJig00535/LUylECYAJ
                 5/jn6XKt6UYCQJbVNzBg/YPGc1RF4xdsGVDBben/JXpeGEmkdmXPILTKd9tZ5TC0
                 uOKpF5rWAruB5PCIrquamOejpXV9aQA/K2JQDuc0mcKz
-                -----END CERTIFICATE-----    
+                -----END CERTIFICATE-----
+EOF
 
-# Signature Cosign
----
-apiVersion: kyverno.io/v1
-kind: ClusterPolicy
-metadata:
-  name: check-image
-spec:
-  validationFailureAction: Enforce
-  background: false
-  webhookTimeoutSeconds: 30
-  failurePolicy: Fail
-  rules:
-    - name: check-image
-      match:
-        any:
-        - resources:
-            kinds:
-              - Pod
-      verifyImages:
-      - imageReferences:
-        - &quot;ghcr.io/kyverno/test-verify-image*&quot;
-        attestors:
-        - count: 1
-          entries:
-          - keys:
-              publicKeys: |-
-                -----BEGIN PUBLIC KEY-----
-                MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8nXRh950IZbRj8Ra/N9sbqOPZrfM
-                5/KAQN0/KjHcorm/J5yctVd7iEcnessRQjU917hmKO6JWVGHpDguIyakZA==
-                -----END PUBLIC KEY-----     
+# Verify image
+kubectl run test --image=ghcr.io/kyverno/test-verify-image:signed --dry-run=server
+pod/test created (server dry run)
+
+$ kubectl run test --image=ghcr.io/kyverno/test-verify-image:signed --dry-run=server -o yaml | grep &quot;image: &quot;
+  - image: ghcr.io/kyverno/test-verify-image:signed@sha256:b31bfb4d0213f254d361e0079deaaebefa4f82ba7aa76ef82e90b4935ad5b105
+
+# Block pod with an unsigned image will be blocked
+$ kubectl run test --image=ghcr.io/kyverno/test-verify-image:unsigned --dry-run=server
+Error from server: admission webhook &quot;mutate.kyverno.svc-fail&quot; denied the request: 
+
+resource Pod/default/test was blocked due to the following policies 
+
+check-image-notary:
+  verify-signature-notary: 'failed to verify image ghcr.io/kyverno/test-verify-image:unsigned:
+    .attestors[0].entries[0]: failed to verify ghcr.io/kyverno/test-verify-image@sha256:74a98f0e4d750c9052f092a7f7a72de7b20f94f176a490088f7a744c76c53ea5:
+    no signature is associated with &quot;ghcr.io/kyverno/test-verify-image@sha256:74a98f0e4d750c9052f092a7f7a72de7b20f94f176a490088f7a744c76c53ea5&quot;,
+    make sure the image was signed successfully'
 </code></pre>
 <h3 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h3>
-<p>It is also possible to delete objects</p>
-<pre><code class="language-yaml">apiVersion: kyverno.io/v2alpha1
+<p>Kyverno has the ability to clean up existing resources with a policy called <code>CleaunPolicy</code>. By default the CleanupController does not have permissions to delete deployments it will need:</p>
+<pre><code class="language-yaml">---
+cleanupController:
+  rbac:
+    clusterRole:
+      extraResources:
+      - apiGroups:
+          - 'apps'
+        resources:
+          - 'deployments'
+</code></pre>
+<pre><code class="language-sh"># Create Kyverno ClusterCleanupPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: kyverno.io/v2alpha1
 kind: ClusterCleanupPolicy
 metadata:
   name: cleandeploy
@@ -650,16 +1088,361 @@ spec:
       operator: LessThan
       value: 2
   schedule: &quot;*/5 * * * *&quot;
+EOF
+
+# Create Deployment
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cleanup
+    canremove: &quot;true&quot;
+  name: cleanup
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cleanup
+  template:
+    metadata:
+      labels:
+        app: cleanup
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+EOF
+
+# Show logs
+$ kubectl -n kyverno logs kyverno-cleanup-controller-56d7bcd685-wlwgq
+...
+I0608 08:51:46.932186       1 controller.go:71] cleanup-controller &quot;msg&quot;=&quot;added&quot; &quot;kind&quot;=&quot;ClusterCleanupPolicy&quot; &quot;name&quot;=&quot;cleandeploy&quot; &quot;operation&quot;=&quot;added&quot;
+I0608 08:51:46.932583       1 controller.go:43] setup/cluster-cleanup-policy &quot;msg&quot;=&quot;resource added&quot; &quot;name&quot;=&quot;cleandeploy&quot; &quot;type&quot;=&quot;ClusterCleanupPolicy&quot;
+I0608 08:55:13.403812       1 handlers.go:89] cleanup &quot;msg&quot;=&quot;cleaning up...&quot; &quot;policy&quot;=&quot;cleandeploy&quot;
+I0608 08:55:13.417117       1 handlers.go:216] cleanup &quot;msg&quot;=&quot;resource matched, it will be deleted...&quot; &quot;name&quot;=&quot;cleanup&quot; &quot;namespace&quot;=&quot;default&quot; &quot;policy&quot;=&quot;cleandeploy&quot;
+I0608 08:55:13.424618       1 handlers.go:99] cleanup &quot;msg&quot;=&quot;done&quot; &quot;policy&quot;=&quot;cleandeploy&quot;
+I0608 08:55:13.425265       1 event.go:307] &quot;Event occurred&quot; object=&quot;cleandeploy&quot; fieldPath=&quot;&quot; kind=&quot;ClusterCleanupPolicy&quot; apiVersion=&quot;kyverno.io/v2alpha1&quot; type=&quot;Normal&quot; reason=&quot;PolicyApplied&quot; message=&quot;successfully cleaned up the target resource Deployment/default/cleanup&quot;
 </code></pre>
-<h3 id="testing-policies">Testing policies<a class="headerlink" href="#testing-policies" title="Permanent link">&para;</a></h3>
-<p>It is possible to test policies in pipelines, before applying the resources to be created.</p>
-<h3 id="reporting">Reporting<a class="headerlink" href="#reporting" title="Permanent link">&para;</a></h3>
-<p>Kyverno provides reports on all policies.</p>
-<pre><code class="language-sh">$ kubectl get polr -A
-NAMESPACE     NAME                                  PASS   FAIL   WARN   ERROR   SKIP   AGE
-kube-system   cpol-disallow-privileged-containers   14     0      0      0       0      6s
-kyverno       cpol-disallow-privileged-containers   2      0      0      0       0      5s
-default       cpol-disallow-privileged-containers   0      1      0      0       0      5s
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
+<p>Kyverno supports the definition of variables</p>
+<pre><code class="language-sh"># Create Kyverno ClusterPolicy
+$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: who-created-this
+spec:
+  background: false
+  rules:
+  - name: who-created-this
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    mutate:
+      patchStrategicMerge:
+        metadata:
+          annotations:
+            created-by: &quot;{{request.userInfo.username}}&quot;
+EOF
+
+# Create pod
+$ kubectl run variable --image nginx
+
+# Show annotations
+$ kubectl get pod variable -o 
+jsonpath='{.metadata.annotations}'
+{&quot;created-by&quot;:&quot;minikube-user&quot;,&quot;policies.kyverno.io/last-applied-patch-this.kyverno.io: added /metadata/annotations\n&quot;}
+</code></pre>
+<h3 id="external-data-sources">External Data Sources<a class="headerlink" href="#external-data-sources" title="Permanent link">&para;</a></h3>
+<p>Get data from configmaps, the Kubernetes API, other cluster services and image logs.</p>
+<h4 id="configmaps">Configmaps<a class="headerlink" href="#configmaps" title="Permanent link">&para;</a></h4>
+<pre><code class="language-sh">$ cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: external-data-source
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: some-config-map
+  namespace: external-data-source
+data:
+  env: production
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: cm-variable-example
+  annotations:
+    pod-policies.kyverno.io/autogen-controllers: DaemonSet,Deployment,StatefulSet
+spec:
+    rules:
+    - name: example-configmap-lookup
+      match:
+        any:
+        - resources:
+            kinds:
+            - Pod
+            namespaces:
+            - external-data-source
+      context:
+      - name: dictionary
+        configMap:
+          name: some-config-map
+          namespace: external-data-source
+      mutate:
+        patchStrategicMerge:
+          metadata:
+            labels:
+              my-environment-name: &quot;{{dictionary.data.env}}&quot;
+EOF
+
+# Run Pod
+$ kubectl run external-data-source --image nginx -n external-data-source
+
+# Show labels
+$ kubectl -n external-data-source get po --show-labels 
+NAME                   READY   STATUS    RESTARTS   AGE   LABELS
+external-data-source   1/1     Running   0          32s   my-environment-name=production,run=external-data-source
+</code></pre>
+<h2 id="reporting">Reporting<a class="headerlink" href="#reporting" title="Permanent link">&para;</a></h2>
+<h3 id="get-and-describe-result">Get and Describe result<a class="headerlink" href="#get-and-describe-result" title="Permanent link">&para;</a></h3>
+<pre><code class="language-sh">$ kubectl get policyreport
+NAME                  PASS   FAIL   WARN   ERROR   SKIP   AGE
+cpol-require-labels   1      0      0      0       0      10m
+</code></pre>
+<pre><code class="language-sh">$ kubectl describe policyreport
+Name:         cpol-require-labels
+Namespace:    default
+Labels:       app.kubernetes.io/managed-by=kyverno
+              cpol.kyverno.io/require-labels=862
+Annotations:  &lt;none&gt;
+API Version:  wgpolicyk8s.io/v1alpha2
+Kind:         PolicyReport
+Metadata:
+  Creation Timestamp:  2023-06-07T08:44:08Z
+  Generation:          1
+  Managed Fields:
+    API Version:  wgpolicyk8s.io/v1alpha2
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .:
+          f:app.kubernetes.io/managed-by:
+          f:cpol.kyverno.io/require-labels:
+      f:results:
+      f:summary:
+        .:
+        f:error:
+        f:fail:
+        f:pass:
+        f:skip:
+        f:warn:
+    Manager:         reports-controller
+    Operation:       Update
+    Time:            2023-06-07T08:44:08Z
+  Resource Version:  1278
+  UID:               ee1dd3fa-c526-4e98-88d1-1e6cbb3455d4
+Results:
+  Message:  validation rule 'check-team' passed.
+  Policy:   require-labels
+  Resources:
+    API Version:  v1
+    Kind:         Pod
+    Name:         nginx
+    Namespace:    default
+    UID:          5ef94d4f-c84e-4b46-b12f-8956a134e53f
+  Result:         pass
+  Rule:           check-team
+  Scored:         true
+  Source:         kyverno
+  Timestamp:
+    Nanos:    0
+    Seconds:  1686127448
+Summary:
+  Error:  0
+  Fail:   0
+  Pass:   1
+  Skip:   0
+  Warn:   0
+Events:   &lt;none&gt;
+</code></pre>
+<h2 id="kyvernocli">KyvernoCLI<a class="headerlink" href="#kyvernocli" title="Permanent link">&para;</a></h2>
+<pre><code class="language-sh"># Install Kyverno CLI using kubectl krew plugin manager
+kubectl krew install kyverno
+
+# test the Kyverno CLI
+kubectl kyverno version  
+</code></pre>
+<h3 id="apply">Apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
+<h4 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h4>
+<pre><code class="language-yaml"># cli/example1/add_network_policy.yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-networkpolicy
+spec:
+  background: false
+  rules:
+  - name: default-deny-ingress
+    match:
+      any:
+      - resources:
+          kinds:
+          - Namespace
+        clusterRoles:
+        - cluster-admin
+    generate:
+      apiVersion: networking.k8s.io/v1
+      kind: NetworkPolicy
+      name: default-deny-ingress
+      namespace: &quot;{{request.object.metadata.name}}&quot;
+      synchronize: true
+      data:
+        spec:
+          # select all pods in the namespace
+          podSelector: {}
+          policyTypes:
+          - Ingress
+---
+# cli/example1/required_default_network_policy.yaml
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: devtest
+---
+# cli/example1/value.yaml 
+policies:
+  - name: add-networkpolicy
+    resources:
+      - name: devtest
+        values:
+          request.namespace: devtest
+</code></pre>
+<pre><code class="language-sh">$ kubectl kyverno apply cli/example1/add_network_policy.yaml --resource cli/example1/required_default_network_policy.yaml -f cli/example1/value.yaml 
+
+Applying 1 policy rule to 1 resource...
+
+pass: 1, fail: 0, warn: 0, error: 0, skip: 0
+</code></pre>
+<h4 id="example-2-with-policy-report">Example 2 with Policy Report<a class="headerlink" href="#example-2-with-policy-report" title="Permanent link">&para;</a></h4>
+<pre><code class="language-yaml"># cli/example2/enforce-pod-name.yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: enforce-pod-name
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: validate-name
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+          namespaceSelector:
+            matchExpressions:
+            - key: foo.com/managed-state
+              operator: In
+              values:
+              - managed
+      validate:
+        message: &quot;The Pod must end with -nginx&quot;
+        pattern:
+          metadata:
+            name: &quot;*-nginx&quot;
+---
+# cli/example2/nginx.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-nginx
+  namespace: test1
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+---
+# cli/example2/namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test1
+  labels:
+    foo.com/managed-state: managed
+---
+# cli/example2/value.yaml
+namespaceSelector:
+  - name: test1
+    labels:
+      foo.com/managed-state: managed
+
+</code></pre>
+<pre><code class="language-sh">$ kubectl kyverno apply cli/example2/enforce-pod-name.yaml --resource cli/example2/nginx.yaml -f cli/example2/value.yaml  --policy-report
+
+Applying 1 policy rule to 1 resource...
+----------------------------------------------------------------------
+POLICY REPORT:
+----------------------------------------------------------------------
+apiVersion: wgpolicyk8s.io/v1alpha2
+kind: ClusterPolicyReport
+metadata:
+  name: clusterpolicyreport
+results:
+- message: validation rule 'validate-name' passed.
+  policy: enforce-pod-name
+  resources:
+  - apiVersion: v1
+    kind: Pod
+    name: test-nginx
+    namespace: test1
+  result: pass
+  rule: validate-name
+  scored: true
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1686217475
+- message: The Pod must end with -nginx
+  policy: enforce-pod-name
+  resources:
+  - apiVersion: v1
+    kind: Pod
+    name: test-nginx
+    namespace: test1
+  result: skip
+  rule: autogen-validate-name
+  scored: true
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1686217475
+- message: The Pod must end with -nginx
+  policy: enforce-pod-name
+  resources:
+  - apiVersion: v1
+    kind: Pod
+    name: test-nginx
+    namespace: test1
+  result: skip
+  rule: autogen-cronjob-validate-name
+  scored: true
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1686217475
+summary:
+  error: 0
+  fail: 0
+  pass: 1
+  skip: 2
+  warn: 0
 </code></pre>
               
             </div>
