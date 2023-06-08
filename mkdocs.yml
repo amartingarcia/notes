@@ -37,7 +37,6 @@ nav:
         - CKA: kubernetes/certifications/cka.md
         - CKS: kubernetes/certifications/cks.md
         - Helm: kubernetes/helm/helm.md
-        - helm-docs: kubernetes/helm/helm-docs.md
         - Helmfile: kubernetes/helm/helmfile.md
         - Helmwave: kubernetes/helmwave.md
         - Kyverno: kubernetes/kyverno.md

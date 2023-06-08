@@ -9,13 +9,10 @@ author: Adrián Martín García
 ## Organization
 This section defines everything related to Azure Devops groups:
 
-Defining groups of groups.
-
-Defining permissions for groups.
-
-Link between Azure Groups and Azure Devops Groups.
-
-How to assign members to a group.
+* Defining groups of groups.
+* Defining permissions for groups.
+* Link between Azure Groups and Azure Devops Groups.
+* How to assign members to a group.
 
 To get an overview of Azure Devops groups, it is recommended to read the official [documentation](https://learn.microsoft.com/en-us/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page). This document will provide us with the necessary knowledge to know how to develop all the resources defined on this page:
 
