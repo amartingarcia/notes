@@ -440,6 +440,18 @@
 <h2 id="add-helm-repo-and-install-it">Add Helm Repo and install it<a class="headerlink" href="#add-helm-repo-and-install-it" title="Permanent link">&para;</a></h2>
 <pre><code class="language-sh">$ helm repo add kyverno https://kyverno.github.io/kyverno/
 $ helm repo update
+$ cat &lt;&lt;EOF &gt;&gt; values.yaml
+---
+cleanupController:
+  rbac:
+    clusterRole:
+      extraResources:
+      - apiGroups:
+          - 'apps'
+        resources:
+          - 'deployments'
+EOF
+
 $ helm upgrade --install kyverno -n kyverno -f values.yaml --create-namespace kyverno/kyverno --version 3.0.0
 </code></pre>
 <h2 id="policies-and-rules">Policies and Rules<a class="headerlink" href="#policies-and-rules" title="Permanent link">&para;</a></h2>
