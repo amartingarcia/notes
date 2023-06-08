@@ -96,6 +96,22 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Jenkins</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#jenkinsfiles">Jenkinsfiles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-1">Example 1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-2">Example 2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-3">Example 3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-4">Example 4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-5">Example 5</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-6">Example 6</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
               </ul>
@@ -365,9 +381,9 @@
               
                 <h1 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">&para;</a></h1>
 <p>[TBD]</p>
-<h1 id="jenkinsfiles">Jenkinsfiles<a class="headerlink" href="#jenkinsfiles" title="Permanent link">&para;</a></h1>
+<h2 id="jenkinsfiles">Jenkinsfiles<a class="headerlink" href="#jenkinsfiles" title="Permanent link">&para;</a></h2>
 <p>On this section declare some Jenkinsfile documentated.</p>
-<h2 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h2>
+<h3 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h3>
 <pre><code class="language-groovy">// Available environments in which it can be deployed
 ENVIRONMENTS = [
   &quot;DEV&quot;: [
@@ -561,7 +577,7 @@ post {
 
 } // `pipeline` closing
 </code></pre>
-<h2 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h2>
+<h3 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h3>
 <pre><code class="language-groovy">// Name of the repository and its download link
 def map1 = [
   &quot;repo1_map1&quot;      : &quot;&lt;git-url&gt;&quot;,
@@ -723,7 +739,7 @@ stage (' Deploy phase 3') {
 
 } // pipeline
 </code></pre>
-<h2 id="example-3">Example 3<a class="headerlink" href="#example-3" title="Permanent link">&para;</a></h2>
+<h3 id="example-3">Example 3<a class="headerlink" href="#example-3" title="Permanent link">&para;</a></h3>
 <pre><code class="language-groovy">
 PROJECTS = [
   &quot;&quot;: [],
@@ -822,7 +838,7 @@ stage('(Helmfile) Action') {
 
 } // `pipeline` closing
 </code></pre>
-<h2 id="example-4">Example 4<a class="headerlink" href="#example-4" title="Permanent link">&para;</a></h2>
+<h3 id="example-4">Example 4<a class="headerlink" href="#example-4" title="Permanent link">&para;</a></h3>
 <pre><code class="language-groovy">pipeline {
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -910,7 +926,7 @@ stage('Creating new images') {
 
 } } // `steps` and `pipeline` closing
 </code></pre>
-<h2 id="example-5">Example 5<a class="headerlink" href="#example-5" title="Permanent link">&para;</a></h2>
+<h3 id="example-5">Example 5<a class="headerlink" href="#example-5" title="Permanent link">&para;</a></h3>
 <pre><code class="language-groovy">// @Library(&quot;sonar@lts&quot;) _
 
 // Available Environments
@@ -1208,7 +1224,7 @@ stage('Deploy to environment: Single microservices') {
 } // `all stages` closing
 } // `pipeline` closing
 </code></pre>
-<h2 id="example-6">Example 6<a class="headerlink" href="#example-6" title="Permanent link">&para;</a></h2>
+<h3 id="example-6">Example 6<a class="headerlink" href="#example-6" title="Permanent link">&para;</a></h3>
 <pre><code class="language-groovy">TENANTS = [
   &quot;&quot;: [],
   &quot;dev&quot;: [
